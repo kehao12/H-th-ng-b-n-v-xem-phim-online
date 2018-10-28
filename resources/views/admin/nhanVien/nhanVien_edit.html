@@ -12,7 +12,6 @@
                 <th scope="col">TÊN</th>
                 <th scope="col">GIỚI TÍNH</th>
                 <th scope="col">ĐỊA CHỈ</th>
-                <th scope="col">TÀI KHOẢN</th>
                 <th scope="col">QUYỀN</th>
                 <th scope="col">XỬ LÝ</th>
               </tr>
@@ -23,7 +22,6 @@
                 <td>{{nv.ten}}</td>
                 <td>{{nv.gioitinh}}</td>
                 <td>{{nv.diachi}}</td>
-                <td>{{nv.tenTaiKhoan}}</td>
                 <td>{{nv.quyen}}</td>
                 <td>
                   <i class="fa fa-pencil" ng-click="showEdit(nv)" style="padding-right: 13px; cursor: pointer;"></i>
@@ -43,14 +41,11 @@
                   <td>
                     <input type="text" class="form-control" ng-model="nv.diachi" minlength="3" maxlength="40" required>
                   </td>
-                  <td> 
-                   <input type="text" class="form-control" ng-model="nv.tenTaiKhoan" minlength="3" maxlength="20" required>
-                 </td>
                  <td>  
                   <select class="form-control"  ng-model="nv.quyen">
-                    <option value="1">Quản lý Thông tin</option>
-                    <option value="2">Quản lý ĐẶT VÉ</option>
-                    <option value="3">Quản lý Tổng Thể</option>
+                    <option value="1">Quản lý Thông tin &ensp;- &ensp;1</option>
+                    <option value="2">Quản lý ĐẶT VÉ &ensp;- &ensp;2</option>
+                    <option value="3">Quản lý Tổng Thể &ensp;- &ensp;3</option>
                   </select>           
                 </td>
                 <td>

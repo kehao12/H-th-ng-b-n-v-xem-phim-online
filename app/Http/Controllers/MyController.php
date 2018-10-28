@@ -60,7 +60,7 @@ class MyController extends Controller
      /*$data = DB::table('nhanVien')->join( 'users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.password','users.quyen')->get()->toJson();
 */
       $nhanvien = new nhanVien;
-      $data= $nhanvien->join('users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.password','users.quyen')->get()->toJson();
+      $data= $nhanvien->join('users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.quyen')->get()->toJson();
 
     return $data;
  }
@@ -68,7 +68,7 @@ class MyController extends Controller
  {
      $nhanvien=new nhanvien;
      $users = new taiKhoanAD;
-    $nhanvien->where('id',$id)->update(['ten'=>$rq->ten,'gioitinh'=>$rq->gioitinh,'diachi'=>$rq->diachi,'tenTaiKhoan'=>$rq->taiKhoan]);
+    $nhanvien->where('id',$id)->update(['ten'=>$rq->ten,'gioitinh'=>$rq->gioitinh,'diachi'=>$rq->diaChi]);
     $users->where('tenTK',$rq->taiKhoan)->update(['quyen'=>$rq->quyen]);
     return 1;
  }
