@@ -1,4 +1,4 @@
- var app = angular.module('myApp',['ngRoute','ngMaterial']).constant('API', 'http://localhost:8080/PROJECT/testLRV/public/')
+ var app = angular.module('myApp',['ngRoute','ngMaterial']).constant('API', 'http://localhost:8080/PROJECT/Cinema/public/')
  app.controller('MyController',  function($scope){
 
 
@@ -6,7 +6,7 @@
  })
 
  app.config(function ($routeProvider,$locationProvider) {
- 	var urlLocal="http://localhost:8080/PROJECT/testLRV/resources/views/";
+ 	var urlLocal="http://localhost:8080/PROJECT/Cinema/resources/views/";
  	$routeProvider.
  	when('/',{
  		templateUrl:urlLocal+'admin/adIndex.php',
@@ -23,7 +23,7 @@
  })
  app.controller('themNhanVien',function ($scope,$http,$mdToast) {
  	$scope.addInfo=function(){
- 		var urlCon='http://localhost:8080/PROJECT/testLRV/public/addNhanVien';
+ 		var urlCon='http://localhost:8080/PROJECT/Cinema/public/addNhanVien';
  		var data =$.param({
  			ten:$scope.nameNV,
  			gioitinh:$scope.gioiTinh,
@@ -103,7 +103,7 @@
  		var data =$.param({
  			ten:nv.ten,
  			gioitinh:nv.gioitinh,
- 			quyen:nv.phanQuyen,
+ 			quyen:nv.quyen,
  			diaChi:nv.diachi,
  			taiKhoan:nv.tenTaiKhoan,
  		});
