@@ -49,15 +49,15 @@
 								<a href="" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>QL Nhân Viên
 								</span></a>
 								<ul class="collapse">
-									<li><a href="http://localhost:8080/PROJECT/testLRV/public/logInAD#/nvAdd">Thêm Mới</a></li>
-									<li><a href="http://localhost:8080/PROJECT/testLRV/public/logInAD#/nvEdit">Sửa Thông Tin</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvAdd">Thêm Mới</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">Sửa Thông Tin</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" aria-expanded="true"><i class="ti-pie-chart"></i><span>QL Thông Tin Rạp</span></a>
+								<a href="" aria-expanded="true"><i class="ti-pie-chart"></i><span>QL Thông Tin Rạp</span></a>
 								<ul class="collapse">
-									<li><a href="#">Thêm Mới</a></li>
-									<li><a href="#">Sửa Thông Tin</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapAdd">Thêm Mới</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapEdit">Sửa Thông Tin</a></li>
 								</ul>
 							</li>
 							<li>

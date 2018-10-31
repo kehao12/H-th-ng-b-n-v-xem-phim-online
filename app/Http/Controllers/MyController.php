@@ -78,5 +78,9 @@ class MyController extends Controller
      $nhanvien->delete();
      return 1;
  }
+ public function theRapPhim(Request $rq)
+ {
+    
+ }
 
 }

@@ -19,6 +19,14 @@
  		templateUrl:urlLocal+'admin/nhanVien/nhanVien_edit.html',
  		controller:'suaNhanVien'
  	})
+ 	.when('/rapAdd',{
+ 		templateUrl:urlLocal+'admin/rapChieu/rapChieu_add.html',
+ 		controller:'themRapChieu'
+ 	})
+ 	.when('/rapEdit',{
+ 		templateUrl:urlLocal+'admin/rapChieu/rapChieu_edit.html',
+ 		controller:'suaRapChieu'
+ 	})
  	.otherwise({ redirectTo: '/' })
  })
  app.controller('themNhanVien',function ($scope,$http,$mdToast) {
@@ -198,3 +206,69 @@
  		}
  	};
  });*/
+ /* rap phim */
+ app.controller('themRapChieu',function ($scope,$http,$mdToast) {
+ 	$scope.addInfoRap=function(){
+ 		var urlCon='http://localhost:8080/PROJECT/Cinema/public/addRapPhim';
+ 		var data =$.param({
+ 			tenRap:$scope.nameRap,
+ 			diaChi:$scope.diaChi
+ 		});
+ 		console.log(data);
+ 		var config={
+ 			headers:{
+ 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+ 			}
+ 		}
+ 		$http.post(urlCon,data,config)
+ 		.then(function(res){
+ 			if(res.data =='addSucess')	{	
+ 				$scope.showMessg('Thêm thành công');
+ 			}
+ 		},function(er){
+ 			$scope.showMessg('Thêm thất bại');
+ 			console.log(er.data);
+ 			
+ 		})
+ 	}
+ 	/* hien thi thong bao */
+ 	var last = {
+ 		bottom: true,
+ 		top: false,
+ 		left: false,
+ 		right: true
+ 	};
+
+ 	$scope.toastPosition = angular.extend({},last);
+
+ 	$scope.getToastPosition = function() {
+ 		sanitizePosition();
+
+ 		return Object.keys($scope.toastPosition)
+ 		.filter(function(pos) { return $scope.toastPosition[pos]; })
+ 		.join(' ');
+ 	};
+
+ 	function sanitizePosition() {
+ 		var current = $scope.toastPosition;
+
+ 		if ( current.bottom && last.top ) current.top = false;
+ 		if ( current.top && last.bottom ) current.bottom = false;
+ 		if ( current.right && last.left ) current.left = false;
+ 		if ( current.left && last.right ) current.right = false;
+
+ 		last = angular.extend({},current);
+ 	}
+
+ 	$scope.showMessg = function(thongbao) {
+ 		var pinTo = $scope.getToastPosition();
+
+ 		$mdToast.show(
+ 			$mdToast.simple()
+ 			.textContent(thongbao)
+ 			.position(pinTo )
+ 			.hideDelay(3000)
+ 			);
+ 	};
+ })
+ /*end rap phim*/
