@@ -222,7 +222,7 @@
  		}
  		$http.post(urlCon,data,config)
  		.then(function(res){
- 			if(res.data =='addSucess')	{	
+ 			if(res.data == 1)	{	
  				$scope.showMessg('Thêm thành công');
  			}
  		},function(er){
@@ -270,5 +270,99 @@
  			.hideDelay(3000)
  			);
  	};
- })
+ });
+  app.controller('suaRapChieu', function($scope,$http,API,$mdToast){
+ 	$http.get(API+'listRap').success(function(response){
+ 		$scope.rap=response;
+ 	});
+ 	$scope.showEdit=function(rapChild){
+ 		rapChild.hienThi=!rapChild.hienThi;
+ 		
+ 	}	
+
+ 	$scope.editrapChild=function(rapChild){
+ 		
+ 		var data =$.param({
+ 			ten:rapChild.tenRap,
+ 			diaChi:rapChild.diaChi
+ 		});
+ 		var config={
+ 			headers:{
+ 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+ 			}
+ 		}
+ 		$http.post(API+"editrapChild/"+rapChild.id,data,config)
+ 		.then(function(res){
+ 			if(res.data == 1)	{	
+ 				$scope.showMessg('Edit thành công');
+ 				rapChild.hienThi=!rapChild.hienThi;
+ 				
+ 			}
+ 		},function(er){
+ 			$scope.showMessg('Edit thất bại');
+ 			console.log(er.data);
+ 			
+ 		})
+
+ 	};
+
+ 	$scope.deleteRap=function(id){
+ 		var isXacNhan =confirm("Bạn có muốn xóa ?");
+ 		if(isXacNhan){
+ 			$http.post(API+'deleteRap/'+id)
+ 			.then(function(res){
+ 				if(res.data == 1)	{	
+ 					$scope.showMessg('Xóa thành công');
+ 					$http.get(API+'listRap').success(function(response){
+ 						$scope.rap=response;
+ 						console.log(response);
+ 					});
+ 				}
+ 			},function(er){
+ 				$scope.showMessg('Xóa thất bại !');
+ 			})
+ 		}
+ 		else
+ 			return false;
+ 	}
+ 	var last = {
+ 		bottom: true,
+ 		top: false,
+ 		left: false,
+ 		right: true
+ 	};
+
+ 	$scope.toastPosition = angular.extend({},last);
+
+ 	$scope.getToastPosition = function() {
+ 		sanitizePosition();
+
+ 		return Object.keys($scope.toastPosition)
+ 		.filter(function(pos) { return $scope.toastPosition[pos]; })
+ 		.join(' ');
+ 	};
+
+ 	function sanitizePosition() {
+ 		var current = $scope.toastPosition;
+
+ 		if ( current.bottom && last.top ) current.top = false;
+ 		if ( current.top && last.bottom ) current.bottom = false;
+ 		if ( current.right && last.left ) current.left = false;
+ 		if ( current.left && last.right ) current.right = false;
+
+ 		last = angular.extend({},current);
+ 	}
+
+ 	$scope.showMessg = function(thongbao) {
+ 		var pinTo = $scope.getToastPosition();
+
+ 		$mdToast.show(
+ 			$mdToast.simple()
+ 			.textContent(thongbao)
+ 			.position(pinTo )
+ 			.hideDelay(3000)
+ 			);
+ 	};
+
+ });
  /*end rap phim*/

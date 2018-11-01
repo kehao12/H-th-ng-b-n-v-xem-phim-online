@@ -11,7 +11,7 @@ class phongChieu extends Model
     public $timestamps=false;
     public function rapPhim()
     {
-    	return $this->hasOne('App\rapPhim','idRap');
+    	return $this->belongsTo('App\rapPhim','idRap','id');
     }
   
 }

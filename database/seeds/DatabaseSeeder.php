@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-       $this->call(nhanVien::class);
+       $this->call(phongChieu::class);
     }
 }
 /**
@@ -41,4 +41,22 @@ class nhanVien extends Seeder
 			['tenTK'=>'Admin2','matKhau'=>bcrypt('ad')]*/
 		]);
 	}
+}
+class rapPhim extends Seeder
+{
+    public function run()
+    {
+        DB::table('rapphim')->insert([
+            ['tenRap'=>str_random(10),'diaChi'=>str_random(12)]
+        ]);
+    }
+}
+class phongChieu extends Seeder
+{
+    public function run()
+    {
+        DB::table('phongchieu')->insert([
+            ['soLuongGhe'=>20,'idRap'=>3]
+        ]);
+    }
 }

@@ -27,9 +27,24 @@ Route::get('lienket', function() {
     var_dump($data);
     echo "</pre>";
 });
-/* ADMIN QL NHAN VIEN  */
+Route::get('phongchieu',function()
+{
+    $kq=App\phongChieu::find(2)->rapPhim->toArray();
+    echo "<pre>";
+    var_dump($kq);
+    echo "</pre>";
+});
+/* ADMIN  */
+/* QL NHAN VIEN  */
 Route::post('addNhanVien',['as'=>'addNhanVien','uses'=>'MyController@themNHANVIEN']);
 Route::get('listNV','MyController@getList' );
 Route::get('deleteNV/{id}','MyController@deleteNhanVien');
 Route::post('editNV/{id}','MyController@editNV');
 /* END ADMIN QL NHAN VIEN*/
+
+/*  QL RAP PHIM*/
+Route::post('addRapPhim','MyController@themRapPhim');
+Route::get('listRap','MyController@getListRap');
+Route::post('editrapChild/{id}','MyController@editRap');
+Route::post('deleteRap/{id}','MyController@deleteRap');
+/* END RAP PHIM*/

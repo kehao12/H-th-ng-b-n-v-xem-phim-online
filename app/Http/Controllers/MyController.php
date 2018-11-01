@@ -7,6 +7,10 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use App\taikhoanAD;
 use App\nhanvien;
+use App\rapPhim;
+use App\phongChieu;
+use App\taiKhoanKH;
+
 use DB;
 class MyController extends Controller
 {
@@ -78,9 +82,30 @@ class MyController extends Controller
      $nhanvien->delete();
      return 1;
  }
- public function theRapPhim(Request $rq)
+ public function themRapPhim(Request $rq)
  {
-    
+    $rapPhim = new rapPhim;
+    $rapPhim->tenRap=$rq->tenRap;
+    $rapPhim->diaChi=$rq->diaChi;
+    $rapPhim->save();
+    return 1;
  }
-
+ public function getListRap()
+ {
+     $rap = new rapPhim;
+     $data=$rap->select('*')->get()->toJson();
+     return $data;
+ }
+public function editRap($id,Request $rq)
+{
+    $rap = new rapPhim;
+    $rap->where('id',$id)->update(['tenRap'=>$rq->ten,'diaChi'=>$rq->diaChi]);
+    return 1;
+}
+public function deleteRap($id)
+{
+    $rap = rapPhim::findOrFail($id);
+    $rap->delete();
+    return 1;
+}
 }
