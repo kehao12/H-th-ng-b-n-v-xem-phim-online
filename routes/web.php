@@ -48,3 +48,13 @@ Route::get('listRap','MyController@getListRap');
 Route::post('editrapChild/{id}','MyController@editRap');
 Route::post('deleteRap/{id}','MyController@deleteRap');
 /* END RAP PHIM*/
+/* QL THE LOAI*/
+Route::post('addTL', 'MyController@addTheLoai');
+Route::get('listTL','MyController@getListTL');
+Route::post('editTL/{id}','MyController@editTL');
+Route::post('deleteTL/{id}', 'MyController@deleteTL');
+/* END QL THE LOAI*/
+/* ql PHIM*/
+Route::post('addPhim','MyController@addPhim');
+Route::post('upImg','MyController@upImg');
+/* END QL PHIM*/

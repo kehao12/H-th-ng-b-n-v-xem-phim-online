@@ -192,7 +192,6 @@ $(function(){
 	/* end dat ve*/
 
 	/* admin*/
-
 	/* end admin*/
 	/* end function*/
 });
