@@ -58,3 +58,9 @@ Route::post('deleteTL/{id}', 'MyController@deleteTL');
 Route::post('addPhim','MyController@addPhim');
 Route::post('upImg','MyController@upImg');
 /* END QL PHIM*/
+/*Dang Nhap KH*/
+Route::get('user',function(){
+    return view('logInKH');
+});
+Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
+/*END DN KH*/

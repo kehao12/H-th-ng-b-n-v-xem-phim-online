@@ -36,6 +36,33 @@ class MyController extends Controller
         else
            return view('logInAdmin')->with('thongbao','thatbai');
    }
+    public function login_KH(Request $rq)
+    {
+      $tenTKKH=$rq->userName;
+      $matKhauKH=$rq->pass;
+      $this->validate($rq,[
+        'tenTK'=>'require|min:3|max:20',
+        'password'=>'require|min:3|max:50'
+      ],[
+        'tenTK.require'=>'Chua nhap tai khoan',
+        'tenTK.min'=>'Nhap kho duoc it hon 3 ky tu',
+        'tenTK.max'=>'Nhap khong qua 20 ky tu',
+        'password.require'=>'Chua nhap pass'
+      ]);
+      $pass=taiKhoanKH::where('tenTKKH',$tenTKKH)->select('matKhauKh')->get()->toArray();
+      if($pass[0]['matKhauKh']==$matKhauKH){
+        echo "1";
+      }
+      else
+      {
+        echo $matKhauKH;
+        echo "<pre>";
+        var_dump($pass);
+        echo "</pre>";
+        echo $pass[0]['matKhauKh'];
+       echo "0";
+     }
+   }
    public function themNHANVIEN(Request $rq)
    {
        $ten=$rq->ten;
