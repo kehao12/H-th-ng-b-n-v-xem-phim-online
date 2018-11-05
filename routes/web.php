@@ -66,3 +66,5 @@ Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
 /*END DN KH*/
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky',['as' =>'dangky','uses'=>'PageController@postdangky']);
+
+Route::get('chitietphim/{id}',['as'=>'chitietphim','uses'=>'PageController@getChiTiet']);
