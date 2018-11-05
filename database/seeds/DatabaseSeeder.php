@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-       $this->call(phongChieu::class);
+       $this->call(khachhang::class);
     }
 }
 /**
@@ -57,6 +57,15 @@ class phongChieu extends Seeder
     {
         DB::table('phongchieu')->insert([
             ['soLuongGhe'=>20,'idRap'=>3]
+        ]);
+    }
+}
+class khachhang extends Seeder
+{
+    public function run()
+    {
+        DB::table('khachhang')->insert([
+            ['tenKH'=>str_random(10),'diachi'=>str_random(10),'soDienThoai'=>'09090909','email'=>'abcdef@gmail.com','tenTaiKhoan'=>'user']
         ]);
     }
 }
