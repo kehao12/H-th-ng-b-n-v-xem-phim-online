@@ -51,7 +51,9 @@ class MyController extends Controller
       ]);
       $pass=taiKhoanKH::where('tenTKKH',$tenTKKH)->select('matKhauKh')->get()->toArray();
       if($pass[0]['matKhauKh']==$matKhauKH){
-        echo "1";
+        Session()->put('login',true);
+        Session()->put('name',$rq->userName);
+        return view('layouts.header');
       }
       else
       {
