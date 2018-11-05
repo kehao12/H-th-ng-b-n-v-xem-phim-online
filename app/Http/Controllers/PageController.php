@@ -10,6 +10,7 @@ use App\phongChieu;
 use App\taiKhoanKH;
 use App\theLoai;
 use App\phim;
+use App\khachhang;
 use DB;
 
 class PageController extends Controller
@@ -20,8 +21,8 @@ class PageController extends Controller
 	}
 	public function postdangky(Request $request)
 	{
-		/*
-
+		
+/*
 		$this->validate($this,
 			[
 				'username'=>'require|min:3|max:20|unique:taiKhoanKH:tenTKKH',
@@ -29,7 +30,7 @@ class PageController extends Controller
 				'pass1'=>'require|same:pass',
 				'ten'=>'require',
 				'sdt'=>'require',
-				'email'=>'require|email'
+				'email'=>'require|email',
 
 			],[
 				'username.require'=>'Chua nhap tai khoan',
@@ -41,10 +42,10 @@ class PageController extends Controller
 				'pass1.same'=>'Mat khau khong giong nhau',
 				'ten.require'=>'Nhap ten',
 				'sdt.require'=>'Nhap sdt',
-				'username.unique'=>'Tai khoan da ton tai'
+				'username.unique'=>'Tai khoan da ton tai',
 			]);
-
 */
+
 		$taiKhoanKH=new taiKhoanKH;
 		$taiKhoanKH->tenTKKH=$request->username;
 		$taiKhoanKH->matKhauKh=$request->pass;
@@ -56,8 +57,17 @@ class PageController extends Controller
 		$khachhang->soDienThoai=$request->sdt;
 		$khachhang->tenTaiKhoan=$request->username;
 		$khachhang->save();
-		return view('logInKH');
+		return view('pages.dangky')->with('thongbao','thanhcong');
 
 
+	}
+
+	public function getChiTiet(Request $rq)
+	{
+		$phim=phim::where('id',$rq->id)->first();
+		$rap=rapPhim::select()->get();
+		$tl=phim::select('idTL')->where('id',$rq->id)->first();
+		$theloai=theLoai::select('tenTL')->where('id',$tl->id)->get();
+		return view('pages.chitietphim',compact('phim','rap','theloai'));
 	}
 }
