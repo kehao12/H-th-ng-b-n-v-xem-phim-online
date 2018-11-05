@@ -605,7 +605,7 @@ $scope.show=function(ele){
 }	
 $scope.editPhim=function(val){
 
-	var data =$.param({
+	var data1 =$.param({
 		ten:val.tenTL,
 	});
 	var config={
