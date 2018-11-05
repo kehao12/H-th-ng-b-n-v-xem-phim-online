@@ -597,30 +597,48 @@ $scope.showEdit=function(ele){
 
 }	
 $scope.show=function(ele){
-	val.hienThi=!val.hienThi;
-	$http.get(API+'listTL').success(function(response){
-		$scope.tL=response;
+	ele.hienThi=!ele.hienThi;
+	$http.get(API+'listMV').success(function(response){
+		$scope.mv=response;
 	});
 
 }	
-$scope.editPhim=function(val){
+$scope.editPhim=function(ele){
+	if(ele.date == null){
+		ele.date = new Date(ele.ngayKhoiChieu);
+		console.log(ele.date);
+	}
+	ele.date.dateString = moment(ele.date).format("YYYY-MM-DD");
 
+	//console.log($scope.dataP1.date);
+	console.log(ele.date.dateString);
 	var data =$.param({
-		ten:val.tenTL,
+		namePhim:ele.tenPhim,
+		idTL:ele.idTL,
+		noidung:ele.noiDung,
+		khoiChieu:ele.date.dateString,
+		trailer:ele.trailer,
+		thoiLuong:ele.thoiLuong,
+		poster:$scope.fileName
 	});
+	
+
 	var config={
 		headers:{
 			'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
 		}
 	}
-	$http.post(API+"editPhim/"+val.id,data,config)
+	$http.post(API+"editPhim/"+ele.id,data,config)
 	.then(function(res){
 		if(res.data == 1)	{	
-			$scope.showMessg('Edit thành công');
-			val.hienThi=!val.hienThi;
+			$scope.showMessg('Cập nhật thành công');
+			ele.hienThi=!ele.hienThi;
+			$http.get(API+'listMV').success(function(response){
+ 		$scope.mv=response;
+ 	});
 		}
 	},function(er){
-		$scope.showMessg('Edit thất bại');
+		$scope.showMessg('Cập nhật thất bại');
 		console.log(er.data);
 
 	})

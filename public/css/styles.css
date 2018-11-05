@@ -2832,4 +2832,6 @@ table.dataTable thead td {
 }
 .nutSubmit{    width: 355px;margin: auto;display: block;}
 .fmEditMovie{    background: rgb(247, 241, 241);}
+.infoMV p{ padding-left: 5%;    padding-top: 1%; }
+.infoMV img{     padding-bottom: 10px; }
 /*-------------------- END Offset Sidebar ------------------- */

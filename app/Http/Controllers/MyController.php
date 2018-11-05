@@ -209,6 +209,13 @@ public function upLoadImg(Request $rq)
         $data= $mv->join('theloai','phim.idTL','=','theLoai.id')->select('phim.*','theloai.tenTL')->get()->toJson();
         return $data;
     }
+    public function editPhim($id, Request $rq)
+    {
+       $mv = new phim;
+       $mv->where('id',$id)->update(['tenPhim'=>$rq->namePhim,'ngayKhoiChieu'=>$rq->khoiChieu,'noiDung'=>$rq->noidung,
+        'thoiLuong'=>$rq->thoiLuong,'trailer'=>$rq->trailer,'idTL'=>$rq->idTL,'poster'=>$rq->poster]);
+       return 1;
+    }
     public function deletePhim($id)
     {
         $phim=phim::findOrFail($id);

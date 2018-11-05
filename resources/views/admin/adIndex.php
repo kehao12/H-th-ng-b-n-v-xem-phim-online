@@ -43,37 +43,44 @@
 			<div class="main-menu">
 				<div class="menu-inner">
 					<nav>
-						<ul class="metismenu" id="menu">
+						<ul class="metismenu list-group" id="menu">
 							<li class="active">
 								<a href="#" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>								
 							</li>
-							<li>
-								<a href="" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>QL Nhân Viên
+							<li >
+								<a href="" aria-expanded="true"><i class="ti-layout-sidebar-left "></i><span>QL NHÂN VIÊN
 								</span></a>
 								<ul class="collapse">
-									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvAdd">Thêm Mới</a></li>
-									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">Sửa Thông Tin</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvAdd">THÊM MỚI</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="" aria-expanded="true"><i class="ti-pie-chart"></i><span>QL Thông Tin Rạp</span></a>
+								<a href="" aria-expanded="true"><i class="ti-pie-chart"></i><span>QL THÔNG TIN RẠP</span></a>
 								<ul class="collapse">
-									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapAdd">Thêm Mới</a></li>
-									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapEdit">Sửa Thông Tin</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapAdd">THÊM MỚI</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/rapEdit">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#" aria-expanded="true"><i class="ti-palette"></i><span>QL Phòng Chiếu</span></a>
+								<a href="#" aria-expanded="true"><i class="ti-palette"></i><span>QL PHÒNG CHIẾU</span></a>
 								<ul class="collapse">
-									<li><a href="#">Thêm Mới</a></li>
-									<li><a href="#">Sửa Thông Tin</a></li>
+									<li><a href="#">THÊM MỚI</a></li>
+									<li><a href="#">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
 							<li>
 								<a href="#" aria-expanded="true"><i class="ti-slice"></i><span>QL Phim</span></a>
 								<ul class="collapse">
-									<li><a href="<?php echo $url; ?>phimAdd">Thêm Mới</a></li>
-									<li><a href="<?php echo $url; ?>phimEdit">Sửa Thông Tin</a></li>
+									<li><a href="<?php echo $url; ?>phimAdd">THÊM MỚI</a></li>
+									<li><a href="<?php echo $url; ?>phimEdit">SỬA THÔNG TIN</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#" aria-expanded="true"><i class="ti-slice"></i><span>QL LỊCH CHIẾU</span></a>
+								<ul class="collapse">
+									<li><a href="<?php echo $url; ?>phimAdd">THÊM MỚI</a></li>
+									<li><a href="<?php echo $url; ?>phimEdit">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
 							<li>
@@ -83,6 +90,10 @@
 								<li>
 									<a href="#" aria-expanded="true"><i class="fa fa-table"></i>
 										<span>Danh Sách Vé</span></a>		
+									</li>							
+									<li>
+									<a href="#" aria-expanded="true"><i class="fa fa-table"></i>
+										<span>Danh Sách KHÁCH HÀNG</span></a>		
 									</li>							
 									<li>
 										<a href=#" aria-expanded="true"><i class="fa fa-table"></i>

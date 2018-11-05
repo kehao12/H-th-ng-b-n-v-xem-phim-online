@@ -23,6 +23,10 @@
           <button type="button" class="btn btn-outline-danger nutSubmit" ng-click="deletePhim(ele.id)">Xóa</button>
           </div>
            <form  method="post" name="fEdit" novalidate ng-show="!ele.hienThi" >
+              <div class="form-group">
+            <label for="exampleInput">Tên Phim</label>
+            <input type="text" class="form-control" placeholder="Enter name" ng-model="ele.tenPhim" minlength="3" maxlength="20" required>                  
+          </div>
             <div class="form-group">
               <label >Thể Loại</label>
               <select name=gioiTinh  class="form-control" ng-model="ele.idTL">
@@ -35,7 +39,7 @@
           </div>
           <div class="form-group ">
             <label >Ngày Khởi Chiếu</label>
-            <md-datepicker ng-model="dataP.date" md-placeholder="{{ele.ngayKhoiChieu}}"></md-datepicker>
+            <md-datepicker ng-model="ele.date" md-placeholder="{{ele.ngayKhoiChieu}}"></md-datepicker>
           </div>
           <div class="form-group">
             <label >Thời Lượng phim :</label>
@@ -43,19 +47,19 @@
           </div>
           <div class="form-group">
             <label >Trailer</label>
-            <input type="url" class="form-control" ng-model="ele.trailer" minlength="3" maxlength="20" required>
+            <input type="url" class="form-control" ng-model="ele.trailer" minlength="3" maxlength="100" required>
           </div>
           <div class="form-group" >
             <label >Ảnh Poster : {{ele.poster}} </label>
             
           <div class="custom-file">
-          <input class="custom-file-input" id="customFile" type="file" name="file" class="form-control-file border" ng-model="fileName" onchange="angular.element(this).scope().uploadFile(this.files)" required>
-          <label class="custom-file-label" for="customFile">Choose file</label>
+          <input class="custom-file-input" id="customFile" type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)">
+          <label class="custom-file-label" for="customFile" ng-model="fileName" >{{fileName}}</label>
         </div>
           </div>
         
-          <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addPhim()">Cập nhật</button>
-          <button type="button" class="btn btn-outline-danger nutSubmit" ng-click="addPhim()">Hủy</button>
+          <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="editPhim(ele)">Cập nhật</button>
+          <button type="button" class="btn btn-outline-danger nutSubmit" ng-click="show(ele)">Hủy</button>
         </form>
       </div>
     </div>

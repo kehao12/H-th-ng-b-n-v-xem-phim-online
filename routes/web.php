@@ -57,12 +57,14 @@ Route::post('deleteTL/{id}', 'MyController@deleteTL');
 /* ql PHIM*/
 Route::post('addPhim','MyController@addPhim');
 Route::post('upImg','MyController@upImg');
-<<<<<<< HEAD
+
 Route::post('upLoadImg','MyController@uploadImg');
 Route::get('listMV','MyController@getListMV');
+Route::post('editPhim/{id}','MyController@editPhim');
 Route::post('deletePhim/{id}','MyController@deletePhim');
+
 /* END QL PHIM*/
-=======
+
 /* END QL PHIM*/
 /*Dang Nhap KH*/
 Route::get('user',function(){
@@ -70,4 +72,4 @@ Route::get('user',function(){
 });
 Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
 /*END DN KH*/
->>>>>>> 6029c33d512789e60ee862bbb4575e8f30ecb785
+
