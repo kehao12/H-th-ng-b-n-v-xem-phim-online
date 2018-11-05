@@ -36,6 +36,7 @@ class MyController extends Controller
         else
            return view('logInAdmin')->with('thongbao','thatbai');
    }
+
     public function login_KH(Request $rq)
     {
       $tenTKKH=$rq->userName;
@@ -51,7 +52,9 @@ class MyController extends Controller
       ]);
       $pass=taiKhoanKH::where('tenTKKH',$tenTKKH)->select('matKhauKh')->get()->toArray();
       if($pass[0]['matKhauKh']==$matKhauKH){
-        echo "1";
+        Session()->put('login',true);
+        Session()->put('name',$rq->userName);
+        return view('layouts.header');
       }
       else
       {
@@ -63,6 +66,7 @@ class MyController extends Controller
        echo "0";
      }
    }
+
    public function themNHANVIEN(Request $rq)
    {
        $ten=$rq->ten;
