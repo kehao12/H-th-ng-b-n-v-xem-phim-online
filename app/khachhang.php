@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class khachhang extends Model
 {
      protected $table="khachhang";
-    protected $fillable=['id','tenKH','diaChi','soDienThoai','email','tenTaiKhoan'];
+    protected $fillable=['id','tenKH','soDienThoai','email','tenTaiKhoan'];
      public $timestamps=false;
      public function taiKhoan()
      {
