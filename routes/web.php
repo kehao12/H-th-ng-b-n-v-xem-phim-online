@@ -57,4 +57,7 @@ Route::post('deleteTL/{id}', 'MyController@deleteTL');
 /* ql PHIM*/
 Route::post('addPhim','MyController@addPhim');
 Route::post('upImg','MyController@upImg');
+Route::post('upLoadImg','MyController@uploadImg');
+Route::get('listMV','MyController@getListMV');
+Route::post('deletePhim/{id}','MyController@deletePhim');
 /* END QL PHIM*/

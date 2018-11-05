@@ -27,24 +27,22 @@
 @font-face{font-family:ubuntu; src:url('../fonts/unbutu/Ubuntu-Light.ttf') format('truetype'),url('../fonts/unbutu/Ubuntu-Regular.ttf') format('truetype'),url('../fonts/unbutu/Ubuntu-Medium.ttf') format('truetype');font-weight:normal;
  font-style:normal;}
 @font-face{font-family: roboto; src:url('../fonts/roboto/Roboto-Regular.ttf') format('truetype'),url('../fonts/Roboto-Medium.ttf') format('truetype'),
-	url('../fonts/roboto/Roboto-Bold.ttf') format('truetype'),url('../fonts/roboto/Roboto-Light.ttf') format('truetype');font-weight:normal;font-style:normal;
+    url('../fonts/roboto/Roboto-Bold.ttf') format('truetype'),url('../fonts/roboto/Roboto-Light.ttf') format('truetype');font-weight:normal;font-style:normal;
 }
 /* end font */
 
 
-/* ----Đăng nhập start-----
+/* ----ÄÄƒng nháº­p start-----
  */
 .cha{
-    position: relative;
 }
 .cha img.banner {
-    height: 657px;
 }
-form.form-dn{ 
+form.form-dn{
     width: 400px;
-    height: 450px; 
+    height: 450px;
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 35%;
     background: #28282d;
     border-radius: 5px;
@@ -106,14 +104,15 @@ h1 a {
     text-decoration: none;
     font-size: 15px;
 }
-/* ----Đăng nhập end----*/
+/* ----ÄÄƒng nháº­p end----*/
 
-/*-------Đăng ký start-------*/
+/*-------ÄÄƒng kÃ½ start-------*/
 .cha{
     position: relative;
+    height: 667px;
 }
 .cha img.banner {
-    height: 645px;
+    height: 100%;
 }
 form.form-dk{ 
     width: 400px;
@@ -171,7 +170,7 @@ form.form-dk .nutSubmit input{
     color: white;
     text-indent: 0%;
 }
-/*-------Đăng ký end-------*/
+/*-------ÄÄƒng kÃ½ end-------*/
 
 
 /*  header  */

@@ -30,7 +30,7 @@
  		controller:'ql_Phim'
  	})
  	.when('/phimEdit', {
- 		templateUrl:urlLocal+ 'admin/phim/phim_Edit.html',
+ 		templateUrl:urlLocal+ 'admin/phim/phim_edit.html',
  		controller: 'ql_Phim'
  	})
  	.when('/tl',{
@@ -40,18 +40,7 @@
 
  	.otherwise({ redirectTo: '/' })
  });
- app.directive('fileInput', function ($parse) {
- 	return {
- 		link: function ($scope, $iElement, $iAttrs) {
- 			$iElement.on("change",function (event) {
- 				var files = event.target.files;
- 				console.log(files[0].name);
- 				$parse($iAttrs.fileInput).assign($iElement[0].files);
- 				$scope.$apply();
- 			})
- 		}
- 	};
- })
+
  app.controller('themNhanVien',function ($scope,$http,$mdToast) {
  	$scope.addInfo=function(){
  		var urlCon='http://localhost:8080/PROJECT/Cinema/public/addNhanVien';
@@ -62,6 +51,7 @@
  			diaChi:$scope.diaChi,
  			taiKhoan:$scope.taiKhoan,
  			pass:$scope.pass
+
  		});
  		console.log(data);
  		var config={
@@ -455,11 +445,11 @@
  		$http.post(API+"editTL/"+val.id,data,config)
  		.then(function(res){
  			if(res.data == 1)	{	
- 				$scope.showMessg('Edit thành công');
+ 				$scope.showMessg('Cập nhập thành công');
  				val.hienThi=!val.hienThi;
  			}
  		},function(er){
- 			$scope.showMessg('Edit thất bại');
+ 			$scope.showMessg('Cập nhập thất bại');
  			console.log(er.data);
  			
  		})
@@ -528,144 +518,191 @@
 
  /* edn the loai*/
  /* ql phim*/
-  app.controller('ql_Phim', function($scope,$http,API,$mdToast){
+ app.controller('ql_Phim', function($scope,$http,API,$mdToast){
  	$http.get(API+'listTL').success(function(response){
  		$scope.tL=response;
  	});
- 	$http.post(urlCon+'upImg', formData,
- 						transformRequest:angular.identity,
- 						headers:{'Content-type':undefined,'Process-Data':false}
- 					)
- 				.then(function (res) {
- 					if(res.data == 2)	{
- 					
- 				}
- 				});
- 	$scope.addPhim=function(){
+ 	$http.get(API+'listMV').success(function(response){
+ 		$scope.mv=response;
+ 	});
+ 	
+ 	$scope.uploadFile = function(files) {
+ 		var fd = new FormData();
  		var urlCon='http://localhost:8080/PROJECT/Cinema/public/';
- 		var formData=new FormData();
- 		angular.forEach($scope.files, function(file){
- 			formData.append('file',file);
- 		});
- 		var data =$.param({
- 			namePhim:$scope.namePhim,
- 			idTL:$scope.idTL,
- 			noidung:$scope.nd,
- 			khoiChieu:$scope.ngayKC,
- 			thoiLuong:$scope.tlPhim,
- 			trailer:$scope.trailer,
- 		});
+    //Take the first selected file
+    fd.append("file", files[0]);
+    console.log(fd);
+    $http.post(urlCon+"upLoadImg", fd, {
+    	withCredentials: true,
+    	headers: {'Content-Type': undefined },
+    	transformRequest: angular.identity
+    }).
+    then(function(res){
+    	console.log(res.data);
+    	$scope.fileName=res.data;
+    },function(er){
+    	$scope.showMessg('Chọn ảnh thất bại');
+    	console.log(er);
+    });
 
- 		console.log(data);
- 		var config={
- 			headers:{
- 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
- 			}
- 		}
- 		$http.post(urlCon+'addPhim',data,config)
- 		.then(function(res){
- 			if(res.data == 1)	{	
- 				$scope.showMessg('Thêm thành công');
- 			}
- 		},function(er){
- 			$scope.showMessg('Thêm thất bại');
- 			console.log(er.data);
- 			
- 		})
- 	}
- 	$scope.showEdit=function(val){
- 		val.hienThi=!val.hienThi;
- 		
- 	}	
- 	$scope.show=function(val){
- 		val.hienThi=!val.hienThi;
- 		$http.get(API+'listTL').success(function(response){
- 			$scope.tL=response;
- 		});
+};
+$scope.addPhim=function(){
+	var urlCon='http://localhost:8080/PROJECT/Cinema/public/';
 
- 	}	
- 	$scope.editPhim=function(val){
- 		
- 		var data =$.param({
- 			ten:val.tenTL,
- 		});
- 		var config={
- 			headers:{
- 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
- 			}
- 		}
- 		$http.post(API+"editPhim/"+val.id,data,config)
- 		.then(function(res){
- 			if(res.data == 1)	{	
- 				$scope.showMessg('Edit thành công');
- 				val.hienThi=!val.hienThi;
- 			}
- 		},function(er){
- 			$scope.showMessg('Edit thất bại');
- 			console.log(er.data);
- 			
- 		})
 
- 	};
+	$scope.dataP.dateString = moment($scope.dataP.date).format("YYYY-MM-DD");
 
- 	$scope.deletePhim=function(id){
- 		var isXacNhan =confirm("Bạn có muốn xóa ?");
- 		if(isXacNhan){
- 			$http.post(API+'deletePhim/'+id)
- 			.then(function(res){
- 				if(res.data == 1)	{	
- 					$scope.showMessg('Xóa thành công');
- 					$http.get(API+'listTL').success(function(response){
- 						$scope.tL=response;
- 						console.log(response);
- 					});
- 				}
- 			},function(er){
- 				$scope.showMessg('Xóa thất bại !');
- 			})
- 		}
- 		else
- 			return false;
- 	}
- 	var last = {
- 		bottom: true,
- 		top: false,
- 		left: false,
- 		right: true
- 	};
+	console.log($scope.dataP.dateString);
+	if($scope.timeMovie  > 10){
+		var data =$.param({
+			namePhim:$scope.namePhim,
+			idTL:$scope.idTL,
+			noidung:$scope.nd,
+			khoiChieu:$scope.dataP.dateString,
+			trailer:$scope.trailer,
+			thoiLuong:$scope.timeMovie,
+			poster:$scope.fileName
+		});
+		console.log($scope.timeMovie);
+		var config={
+			headers:{
+				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+			}
+		}
+		$http.post(urlCon+'addPhim',data,config)
+		.then(function(res){
+			if(res.data == 1)	{	
+				$scope.showMessg('Thêm thành công');
+				$scope.namePhim="";
+				$scope.idTL="";
+				$scope.trailer="";
+				$scope.timeMovie="";
+				$scope.fileName="";
+				$scope.dataP.date="";
+				$scope.dataP.nd="";
+			}
+		},function(er){
+			$scope.showMessg('Thêm thất bại');
+			console.log(er.data);
 
- 	$scope.toastPosition = angular.extend({},last);
+		});
+	}
+	else{
+		$scope.showMessg('Thêm thất bại');
+	}
+}
 
- 	$scope.getToastPosition = function() {
- 		sanitizePosition();
+$scope.showEdit=function(ele){
+	ele.hienThi=!ele.hienThi;
 
- 		return Object.keys($scope.toastPosition)
- 		.filter(function(pos) { return $scope.toastPosition[pos]; })
- 		.join(' ');
- 	};
+}	
+$scope.show=function(ele){
+	val.hienThi=!val.hienThi;
+	$http.get(API+'listTL').success(function(response){
+		$scope.tL=response;
+	});
 
- 	function sanitizePosition() {
- 		var current = $scope.toastPosition;
+}	
+$scope.editPhim=function(val){
 
- 		if ( current.bottom && last.top ) current.top = false;
- 		if ( current.top && last.bottom ) current.bottom = false;
- 		if ( current.right && last.left ) current.left = false;
- 		if ( current.left && last.right ) current.right = false;
+	var data =$.param({
+		ten:val.tenTL,
+	});
+	var config={
+		headers:{
+			'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+		}
+	}
+	$http.post(API+"editPhim/"+val.id,data,config)
+	.then(function(res){
+		if(res.data == 1)	{	
+			$scope.showMessg('Edit thành công');
+			val.hienThi=!val.hienThi;
+		}
+	},function(er){
+		$scope.showMessg('Edit thất bại');
+		console.log(er.data);
 
- 		last = angular.extend({},current);
- 	}
+	})
 
- 	$scope.showMessg = function(thongbao) {
- 		var pinTo = $scope.getToastPosition();
+};
 
- 		$mdToast.show(
- 			$mdToast.simple()
- 			.textContent(thongbao)
- 			.position(pinTo )
- 			.hideDelay(3000)
- 			);
- 	};
+$scope.deletePhim=function(id){
+	var isXacNhan =confirm("Bạn có muốn xóa ?");
+	if(isXacNhan){
+		$http.post(API+'deletePhim/'+id)
+		.then(function(res){
+			if(res.data == 1)	{	
+				$scope.showMessg('Xóa thành công');
+				$http.get(API+'listMV').success(function(response){
+					$scope.mv=response;
+					console.log(response);
+				});
+			}
+		},function(er){
+			$scope.showMessg('Xóa thất bại !');
+		})
+	}
+	else
+		return false;
+}
+var last = {
+	bottom: true,
+	top: false,
+	left: false,
+	right: true
+};
 
- });
+$scope.toastPosition = angular.extend({},last);
 
+$scope.getToastPosition = function() {
+	sanitizePosition();
+
+	return Object.keys($scope.toastPosition)
+	.filter(function(pos) { return $scope.toastPosition[pos]; })
+	.join(' ');
+};
+
+function sanitizePosition() {
+	var current = $scope.toastPosition;
+
+	if ( current.bottom && last.top ) current.top = false;
+	if ( current.top && last.bottom ) current.bottom = false;
+	if ( current.right && last.left ) current.left = false;
+	if ( current.left && last.right ) current.right = false;
+
+	last = angular.extend({},current);
+}
+
+$scope.showMessg = function(thongbao) {
+	var pinTo = $scope.getToastPosition();
+
+	$mdToast.show(
+		$mdToast.simple()
+		.textContent(thongbao)
+		.position(pinTo )
+		.hideDelay(3000)
+		);
+};
+
+});
+ /*app.directive(
+        'dateInput',
+        function(dateFilter) {
+            return {
+                require: 'ngModel',
+                template: '<input type="date"></input>',
+                replace: true,
+                link: function(scope, elm, attrs, ngModelCtrl) {
+                    ngModelCtrl.$formatters.unshift(function (modelValue) {
+                        return dateFilter(modelValue, 'yyyy-MM-dd');
+                    });
+                    
+                    ngModelCtrl.$parsers.unshift(function(viewValue) {
+                        return new Date(viewValue);
+                    });
+                },
+            };
+    });
+    */
  /* end ql phim*/

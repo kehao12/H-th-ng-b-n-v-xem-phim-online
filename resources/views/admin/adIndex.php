@@ -21,6 +21,7 @@
 	<!-- Responsive datatable examples -->
 	<link href="<?php echo asset('') ?>css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('') ?>css/select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
 	<!-- others css -->
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/typography.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/default-css.css">
@@ -28,7 +29,6 @@
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/responsive.css">
 	<!-- modernizr css -->
 	<script src="<?php echo asset('') ?>js/modernizr-2.8.3.min.js"></script>
-
 </head>
 <body >
 	
@@ -174,7 +174,6 @@
 				<!-- Key Tables -->
 				<script src="<?php echo asset('') ?>js/dataTables.keyTable.min.js"></script>
 
-
 				<!-- angularjs </!-->
 
 				<script type="text/javascript" src="<?php echo asset('') ?>js/bootstrap.js"></script>  
@@ -185,13 +184,15 @@
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-material.min.js"></script>  
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-route.min.js"></script>  
 				<script type="text/javascript" src="<?php echo asset('') ?>js/functionAngular.js"></script>  
+				<script type="text/javascript" src="<?php echo asset('') ?>js/moment.min.js"></script>  
 				<!-- end angularjs </!-->
 				<!-- others plugins -->
 				<script src="<?php echo asset('') ?>js/plugins.js"></script>
 				<script src="<?php echo asset('') ?>js/scripts.js"></script>
 				<script type="text/javascript">
-					$(document).ready(function() {
-
+				
+						$(document).ready(function() {
+							
                 // Default Datatable
                 $('#datatable').DataTable();
 

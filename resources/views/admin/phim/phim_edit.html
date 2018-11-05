@@ -1,0 +1,61 @@
+<div class="row">
+ <div class="col-12 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title text-center">LIST PHIM</h4>
+      <div class="row">
+        <div class="col-6" ng-repeat="ele in mv" style="    margin-bottom: 1%;" ng-init="ele.hienThi=true">
+         <div  data-target="#demo{{ele.id}}" text-white class="btn btn-primary nutInfoMV" data-toggle="collapse" >
+         <p style="float: left; color: white;">ID:{{ele.id}}</p>
+          <p class="text-center text-white">{{ele.tenPhim}}</p>
+       </div>
+         <div id="demo{{ele.id}}" class="collapse fmEditMovie">
+          <div class="infoMV" ng-show="ele.hienThi">
+            <p>Thể loại : {{ele.tenTL}}</p>
+            <p>Nội dung : {{ele.noiDung}}</p>
+            <p>Ngày khởi chiếu : {{ele.ngayKhoiChieu}}</p>
+            <p>Thời lượng phim : {{ele.thoiLuong}}</p>
+            <p>Trailer : {{ele.trailer}}</p>
+            <p>Ảnh poster :</p>
+            
+            <img src="uploads/{{ele.poster}}" class="img-fluid">
+            <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="showEdit(ele)">Cập nhật</button>
+          <button type="button" class="btn btn-outline-danger nutSubmit" ng-click="deletePhim(ele.id)">Xóa</button>
+          </div>
+           <form  method="post" name="fEdit" novalidate ng-show="!ele.hienThi" >
+            <div class="form-group">
+              <label >Thể Loại</label>
+              <select name=gioiTinh  class="form-control" ng-model="ele.idTL">
+               <option ng-repeat="value in tL" value="{{value.id}}">{{value.tenTL}}&ensp;-&ensp;{{value.id}}</option>
+             </select>
+           </div>
+           <div class="form-group ">
+            <label >Nội dung</label>
+            <textarea  type="text" class="form-control" cols="40" rows="5" ng-model="ele.noiDung" minlength="3" maxlength="40" required></textarea>
+          </div>
+          <div class="form-group ">
+            <label >Ngày Khởi Chiếu</label>
+            <md-datepicker ng-model="dataP.date" md-placeholder="{{ele.ngayKhoiChieu}}"></md-datepicker>
+          </div>
+          <div class="form-group">
+            <label >Thời Lượng phim :</label>
+            <input type="number" class="form-control" ng-model="ele.thoiLuong" required min="50" max="250">
+          </div>
+          <div class="form-group">
+            <label >Trailer</label>
+            <input type="url" class="form-control" ng-model="ele.trailer" minlength="3" maxlength="20" required>
+          </div>
+          <div class="form-group" >
+            <label >Ảnh Poster</label>
+           <img class="img-fluid" src="uploads/{{ele.poster}}"></img>
+          </div>
+        
+          <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addPhim()">Cập nhật</button>
+          <button type="button" class="btn btn-outline-danger nutSubmit" ng-click="addPhim()">Hủy</button>
+        </form>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

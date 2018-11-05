@@ -4,6 +4,9 @@ var x,urlImg;
 
 
 $(function(){
+
+
+
 	$('.nutRight').click(function(){
 		var getBanner=document.getElementById("banner");
 		var getSlide = document.getElementsByClassName("slideChild");

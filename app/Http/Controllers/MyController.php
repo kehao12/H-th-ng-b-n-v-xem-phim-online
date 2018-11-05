@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Tests\Debug\FileLinkFormatterTest;
+use Illuminate\Support\Facades\Storage;
+use Validate;
+use App\File;
 use App\taikhoanAD;
 use App\nhanvien;
 use App\rapPhim;
@@ -145,9 +149,44 @@ public function addPhim(Request $rq)
     $phim->noiDung=$rq->noidung;
     $phim->thoiLuong=$rq->thoiLuong;
     $phim->trailer=$rq->trailer;
-    $phim->idTheLoai=$rq->idTL;
+    $phim->poster=$rq->poster;
+    $phim->idTL=$rq->idTL;
     $phim->save();
     return 1;
 }
-/* END QL PHIM*/
+public function upLoadImg(Request $rq)
+{
+  /*  $validate=Validate::make($rq->file(),[
+        'imgFile' =>'require|image|max:20'
+    ]);
+    if($validate->fails()){
+        $errors=[];
+        foreach ($validator->messages()->all() as $error) {
+                array_push($errors, $error);
+            }
+             return response()->json(['errors' => $errors, 'status' => 400], 400);
+         }*/
+         $tenFile="";
+         $file = $rq->file('file');
+         if($rq->hasFile('file')){
+             $file->move('uploads', $file->getClientOriginalName()); 
+             $tenFile=$file->getClientOriginalName();
+             return $tenFile;
+         }
+         else
+            return "ko";
+    }
+    public function getListMV()
+    {
+        $mv=new phim;  
+        $data= $mv->join('theloai','phim.idTL','=','theLoai.id')->select('phim.*','theloai.tenTL')->get()->toJson();
+        return $data;
+    }
+    public function deletePhim($id)
+    {
+        $phim=phim::findOrFail($id);
+        $phim->delete();
+        return 1;
+    }
+    /* END QL PHIM*/
 }
