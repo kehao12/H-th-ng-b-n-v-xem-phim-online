@@ -3,12 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Phim</title>
+	<base href="<?php echo asset('') ?>">
+		
 	<link rel="stylesheet" type="text/css" href="css/chitietphim.css">
-	<link rel="stylesheet" href="css/style.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/function.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+
 	
 </head>
 <body>
@@ -24,7 +27,7 @@
 				<img src="images/{{$phim->poster}}"  alt="Venom">
 				<button type="button" class="trailer showHover">
 					<a href="{{$phim->trailer}}">
-					<img src="images/play-video.png" style="height: 81px; width: 91px;">
+						<img src="images/play-video.png" style="height: 81px; width: 91px;">
 					</a>
 				</button>
 			</div>
@@ -36,7 +39,7 @@
 			<span class="age">C18</span>
 			<span class="tit">{{$phim->tenPhim}}</span>
 			<br>
-			<span class="times">{{$phim->thoiLuong}}</span>
+			<span class="day">{{$phim->thoiLuong}} phút</span>
 			<br>
 			<span class="theloai">{{$theloai->tenTL}}</span>
 			<br>
@@ -147,7 +150,7 @@
 						</div>
 						<div class="row LeftInfo">
 							<p class="nameInfo">Thể loại</p>
-							<p class="detailInfo">{{$phim->idTL}}</p>
+							<p class="detailInfo">{{$theloai->tenTL}}</p>
 						</div>
 					</div>
 					<div class="col-md-6">
