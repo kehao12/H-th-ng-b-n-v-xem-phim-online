@@ -37,7 +37,18 @@
  		templateUrl:urlLocal+'admin/theLoai/theLoaiView.html',
  		controller:'theloai'
  	})
-
+ 	.when('/pcAdd', {
+ 		templateUrl: urlLocal+'admin/phongChieu/phongChieu_add.html',
+ 		controller: 'qlPhongChieu'
+ 	})
+ 	.when('/pcEdit', {
+ 		templateUrl: urlLocal+'admin/phongChieu/phongChieu_edit.html',
+ 		controller: 'qlPhongChieu'
+ 	})
+ 	.when('/lichChieuAdd', {
+ 		templateUrl: 'lichChieu_add.html',
+ 		controller: 'qlLichChieu'
+ 	})
  	.otherwise({ redirectTo: '/' })
  });
 
@@ -598,9 +609,9 @@ $scope.showEdit=function(ele){
 }	
 $scope.show=function(ele){
 	ele.hienThi=!ele.hienThi;
-	$http.get(API+'listMV').success(function(response){
+	/*$http.get(API+'listMV').success(function(response){
 		$scope.mv=response;
-	});
+	});*/
 
 }	
 $scope.editPhim=function(ele){
@@ -634,8 +645,8 @@ $scope.editPhim=function(ele){
 			$scope.showMessg('Cập nhật thành công');
 			ele.hienThi=!ele.hienThi;
 			$http.get(API+'listMV').success(function(response){
- 		$scope.mv=response;
- 	});
+				$scope.mv=response;
+			});
 		}
 	},function(er){
 		$scope.showMessg('Cập nhật thất bại');
@@ -723,4 +734,148 @@ $scope.showMessg = function(thongbao) {
             };
     });
     */
- /* end ql phim*/
+    /* end ql phim*/
+    /* QL PHONG CHIEU*/
+    app.controller('qlPhongChieu', function($scope,$http,API,$mdToast){
+    	$http.get(API+'listRap').success(function(response){
+    		$scope.rp=response;
+    	});
+    	$http.get(API+'listPC').success(function(response){
+    		$scope.phongChieu=response;
+    	});
+    	$scope.soLuong=[5,6,7,8,9,10];
+    	$scope.addInfoPC=function(){
+    		var data =$.param({
+    			tenPC:$scope.namePC,
+    			idRap:$scope.idRap,
+    			slA:$scope.slA,
+    			slB:$scope.slB,
+    			slC:$scope.slC,
+    			slD:$scope.slD,
+    			slE:$scope.slE
+    		});
+    		console.log(data);
+    		var config={
+    			headers:{
+    				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+    			}
+    		}
+    		$http.post(API+'addPC',data,config)
+    		.then(function(res){
+    			if(res.data == 1)	{	
+    				$scope.showMessg('Thêm thành công');
+    				$scope.namePC="";
+    				$scope.idRap="";
+    				$scope.slA="";
+    				$scope.slB="";
+    				$scope.slC="";
+    				$scope.slD="";
+    				$scope.sl="";
+    			}
+    		},function(er){
+    			$scope.showMessg('Thêm thất bại');
+    			console.log(er.data);
+
+    		})
+    	}
+    	$scope.showEdit=function(pc){
+    		pc.hienThi=!pc.hienThi;
+
+    	}	
+    	$scope.show=function(pc){
+    		pc.hienThi=!pc.hienThi;
+    		$http.get(API+'listPC').success(function(response){
+    			$scope.tL=response;
+    		});
+
+    	}	
+    	$scope.ediPC=function(pc){
+
+    		var data =$.param({
+    			tenPC:pc.namePC,
+    			idRap:pc.idRap,
+    			slA:pc.slA,
+    			slB:pc.slB,
+    			slC:pc.slC,
+    			slD:pc.slD,
+    			slE:pc.slE
+    		});
+    		var config={
+    			headers:{
+    				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+    			}
+    		}
+    		$http.post(API+"editPC/"+pc.id,data,config)
+    		.then(function(res){
+    			if(res.data == 1)	{	
+    				$scope.showMessg('Cập nhập thành công');
+    				pc.hienThi=!pc.hienThi;
+    			}
+    		},function(er){
+    			$scope.showMessg('Cập nhập thất bại');
+    			console.log(er.data);
+
+    		})
+
+    	};
+
+    	$scope.deletePC=function(id){
+    		var isXacNhan =confirm("Bạn có muốn xóa ?");
+    		if(isXacNhan){
+    			$http.post(API+'deletePC/'+id)
+    			.then(function(res){
+    				if(res.data == 1)	{	
+    					$scope.showMessg('Xóa thành công');
+    					$http.get(API+'listPC').success(function(response){
+    						$scope.phongChieu=response;
+    						console.log(response);
+    					});
+    				}
+    			},function(er){
+    				$scope.showMessg('Xóa thất bại !');
+    			})
+    		}
+    		else
+    			return false;
+    	}
+    	var last = {
+    		bottom: true,
+    		top: false,
+    		left: false,
+    		right: true
+    	};
+
+    	$scope.toastPosition = angular.extend({},last);
+
+    	$scope.getToastPosition = function() {
+    		sanitizePosition();
+
+    		return Object.keys($scope.toastPosition)
+    		.filter(function(pos) { return $scope.toastPosition[pos]; })
+    		.join(' ');
+    	};
+
+    	function sanitizePosition() {
+    		var current = $scope.toastPosition;
+
+    		if ( current.bottom && last.top ) current.top = false;
+    		if ( current.top && last.bottom ) current.bottom = false;
+    		if ( current.right && last.left ) current.left = false;
+    		if ( current.left && last.right ) current.right = false;
+
+    		last = angular.extend({},current);
+    	}
+
+    	$scope.showMessg = function(thongbao) {
+    		var pinTo = $scope.getToastPosition();
+
+    		$mdToast.show(
+    			$mdToast.simple()
+    			.textContent(thongbao)
+    			.position(pinTo )
+    			.hideDelay(3000)
+    			);
+    	};
+
+    });
+ /* END  QL PHONG CHIEU*/

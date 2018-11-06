@@ -284,7 +284,7 @@ header .layerCha .slideImg .slideChild .ndPhim h4 a{color:#ff5860; }
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a{transition: 0.3s;text-decoration: none;    color: #35de33;font-size: 30px;cursor: pointer;}
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a:hover{ color: #b7ea91;}
 /*  so ghe */
-.lichChieu .numberGhe{width: 50%;height: 410px;position: absolute;top: 31%;left: 27%;background: #212529;opacity: 0;visibility: hidden;}
+.lichChieu .numberGhe{width: 50%;height: 410px;position: fixed;top: 31%;left: 27%;background: #212529;opacity: 0;visibility: hidden;z-index: 10;}
 .lichChieu .showNumberGhe{animation: showNumberGhe 0.5s;top: 31%;opacity: 1;visibility: visible;}
 .lichChieu .hideNumberGhe{animation: hideNumberGhe 0.5s;}
 .lichChieu .numberGhe:before{content:'';background: url(../images/closeIcon.png);width: 32px;height: 32px;position: absolute;right: -2%;top: -3%;background-size: 30px 30px;background-repeat: no-repeat;cursor: pointer;}

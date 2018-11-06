@@ -223,4 +223,43 @@ public function upLoadImg(Request $rq)
         return 1;
     }
     /* END QL PHIM*/
+    /* QL PHONG CHIEU*/
+    public function getListRP()
+    {
+      $rp= new rapPhim;
+      $data = $rp->select('*')->get()->toJson();
+      return $data;
+    }
+    public function addPC(Request $rq)
+    {
+      $pc = new phongChieu;
+      $pc->tenPC=$rq->tenPC;
+      $pc->idRap=$rq->idRap;
+      $pc->slA=$rq->slA;
+      $pc->slB=$rq->slB;
+      $pc->slC=$rq->slC;
+      $pc->slD=$rq->slD;
+      $pc->slE=$rq->slE;
+      $pc->save();
+      return 1;
+    }
+    public function getListPC()
+    {
+      $pc=new phongChieu;
+      $data=$pc->join('rapphim','phongchieu.idRap','=','rapphim.id')->select('phongchieu.*','rapphim.tenRap')->get()->toJson();
+      return $data;
+    }
+    public function editPC($id, Request $rq)
+    {
+      $pc=new phongChieu;
+      $pc->where('id',$id)->update(['tenPC'=>$rq->tenPC,'idRap'=>$rq->idRap,'slA'=>$rq->slA,'slB'=>$rq->slB,'slC'=>$rq->slC,'slD'=>$rq->slD,'slE'=>$rq->slE]);
+      return 1;
+    }
+    public function deletePC($id)
+    {
+      $pc=phongChieu::findOrFail($id);
+      $pc->delete();
+      return 1;
+    }
+    /* END QL PHONG CHIEU*/
 }

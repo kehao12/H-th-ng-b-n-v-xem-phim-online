@@ -65,8 +65,9 @@
 							<li>
 								<a href="#" aria-expanded="true"><i class="ti-palette"></i><span>QL PHÒNG CHIẾU</span></a>
 								<ul class="collapse">
-									<li><a href="#">THÊM MỚI</a></li>
-									<li><a href="#">SỬA THÔNG TIN</a></li>
+									<li><a href="<?php echo $url; ?>pcAdd">THÊM MỚI</a></li>
+									<li><a href="<?php echo $url; ?>pcEdit">SỬA THÔNG TIN</a></li>
+									
 								</ul>
 							</li>
 							<li>
@@ -79,8 +80,8 @@
 							<li>
 								<a href="#" aria-expanded="true"><i class="ti-slice"></i><span>QL LỊCH CHIẾU</span></a>
 								<ul class="collapse">
-									<li><a href="<?php echo $url; ?>phimAdd">THÊM MỚI</a></li>
-									<li><a href="<?php echo $url; ?>phimEdit">SỬA THÔNG TIN</a></li>
+									<li><a href="<?php echo $url; ?>lichChieuAdd">THÊM MỚI</a></li>
+									<li><a href="<?php echo $url; ?>lichChieuEdit">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
 							<li>
@@ -93,7 +94,7 @@
 									</li>							
 									<li>
 									<a href="#" aria-expanded="true"><i class="fa fa-table"></i>
-										<span>Danh Sách KHÁCH HÀNG</span></a>		
+										<span>DANH SÁCH KHÁCH HÀNG</span></a>		
 									</li>							
 									<li>
 										<a href=#" aria-expanded="true"><i class="fa fa-table"></i>
@@ -200,40 +201,7 @@
 				<!-- others plugins -->
 				<script src="<?php echo asset('') ?>js/plugins.js"></script>
 				<script src="<?php echo asset('') ?>js/scripts.js"></script>
-				<script type="text/javascript">
 				
-						$(document).ready(function() {
-							
-                // Default Datatable
-                $('#datatable').DataTable();
-
-                //Buttons examples
-                var table = $('#datatable-buttons').DataTable({
-                	lengthChange: false,
-                	buttons: ['copy', 'excel', 'pdf']
-                });
-
-                // Key Tables
-
-                $('#key-table').DataTable({
-                	keys: true
-                });
-
-                // Responsive Datatable
-                $('#responsive-datatable').DataTable();
-
-                // Multi Selection Datatable
-                $('#selection-datatable').DataTable({
-                	select: {
-                		style: 'multi'
-                	}
-                });
-
-                table.buttons().container()
-                .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
-            } );
-
-        </script>
 
     </body>
     </html>

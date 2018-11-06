@@ -34,7 +34,7 @@
           <label >Ảnh Poster</label>
            <div class="custom-file">
           <input class="custom-file-input" id="customFile" type="file" name="file" class="form-control-file border" ng-model="fileName" onchange="angular.element(this).scope().uploadFile(this.files)" required>
-          <label class="custom-file-label" for="customFile">Choose file</label>
+          <label class="custom-file-label" for="customFile" ng-model="fileName">{{fileName}}</label>
         </div>
         </div>
         

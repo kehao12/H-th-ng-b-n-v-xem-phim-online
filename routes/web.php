@@ -27,6 +27,12 @@ Route::get('lienket', function() {
     var_dump($data);
     echo "</pre>";
 });
+Route::get('lienket1', function() {
+    $data=App\phongChieu::find(13)->rapPhim->toArray();
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
+});
 Route::get('phongchieu',function()
 {
     $kq=App\phongChieu::find(2)->rapPhim->toArray();
@@ -64,8 +70,13 @@ Route::post('editPhim/{id}','MyController@editPhim');
 Route::post('deletePhim/{id}','MyController@deletePhim');
 
 /* END QL PHIM*/
-
-/* END QL PHIM*/
+/* QL PHONG CHIEU*/
+Route::get('listRP','MyController@getListRP');
+Route::get('listPC','MyController@getListPC');
+Route::post('addPC','MyController@addPC');
+Route::post('editPC/{id}','MyController@editPC');
+Route::post('deletePC/{id}','MyController@deletePC');
+/* END QL PHONG CHIEU*/
 /*Dang Nhap KH*/
 Route::get('user',function(){
     return view('logInKH');
