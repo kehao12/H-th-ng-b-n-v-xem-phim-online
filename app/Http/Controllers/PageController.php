@@ -66,8 +66,7 @@ class PageController extends Controller
 	{
 		$phim=phim::where('id',$rq->id)->first();
 		$rap=rapPhim::select()->get();
-		$tl=phim::select('idTL')->where('id',$rq->id)->first();
-		$theloai=theLoai::select('tenTL')->where('id',$tl->id)->get();
+		$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
 		return view('pages.chitietphim',compact('phim','rap','theloai'));
 	}
 }
