@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class phim extends Model
 {
    protected $table="phim";
-    protected $fillable = [ 'id','tenPhim','ngayKhoiChieu','noiDung','thoiLuong','trailer','poster','idTheLoai'];
+    protected $fillable = [ 'id','tenPhim','ngayKhoiChieu','noiDung','thoiLuong','trailer','poster','idTL'];
     public $timestamps=false;
     public function theLoai()
     {
