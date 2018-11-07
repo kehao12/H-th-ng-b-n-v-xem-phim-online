@@ -69,4 +69,9 @@ class PageController extends Controller
 		$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
 		return view('pages.chitietphim',compact('phim','rap','theloai'));
 	}
+
+	public function getTrangChu()	
+	{	
+		return view('pages.index');
+	}
 }
