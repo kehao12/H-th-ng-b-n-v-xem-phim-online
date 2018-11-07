@@ -68,3 +68,4 @@ Route::get('dangky','PageController@getdangky');
 Route::post('dangky',['as' =>'dangky','uses'=>'PageController@postdangky']);
 
 Route::get('chitietphim/{id}',['as'=>'chitietphim','uses'=>'PageController@getChiTiet']);
+Route::get('trangchu',['as'=>'trangchu','uses'=>'PageController@getTrangChu']);
