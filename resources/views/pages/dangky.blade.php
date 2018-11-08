@@ -13,13 +13,13 @@
 	<div class="cha">
 		<img src="images/hinhnen.jpg" class="img-fluid banner" alt="">
 		<div class="container">
+			@if(Session::has('thanhcong'))
+			<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
+			@endif
 			<form action="dangky" method="post" class="form-dk">
 				<div class="container">
 					<div class="row">
 
-						@if(Session::has('thanhcong'))
-						<div class="alert alert-success">{{Session::get('thanhcong')}}</div>
-						@endif
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 						<div class="col-md-12 img-nen">
 							<img src="images/logo12.png" class="img-hinh" alt="">
