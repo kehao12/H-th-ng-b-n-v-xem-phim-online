@@ -1,4 +1,4 @@
-<?php $url="http://localhost:8080/PROJECT/Cinema/public/logInAD#/"; ?>
+<?php $url="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/logInAD#/"; ?>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -51,7 +51,7 @@
 								<a href="" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>QL Nhân Viên
 								</span></a>
 								<ul class="collapse">
-									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvAdd">Thêm Mới</a></li>
+									<li><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/logInAD#/nvAdd">Thêm Mới</a></li>
 									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">Sửa Thông Tin</a></li>
 								</ul>
 							</li>
