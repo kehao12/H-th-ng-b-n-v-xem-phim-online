@@ -22,7 +22,7 @@ class PageController extends Controller
 	public function postdangky(Request $request)
 	{
 		
-/*
+
 		$this->validate($this,
 			[
 				'username'=>'require|min:3|max:20|unique:taiKhoanKH:tenTKKH',
@@ -43,35 +43,49 @@ class PageController extends Controller
 				'ten.require'=>'Nhap ten',
 				'sdt.require'=>'Nhap sdt',
 				'username.unique'=>'Tai khoan da ton tai',
+			],[
+
+
 			]);
-*/
-
-		$taiKhoanKH=new taiKhoanKH;
-		$taiKhoanKH->tenTKKH=$request->username;
-		$taiKhoanKH->matKhauKh=$request->pass;
-		$taiKhoanKH->save();
-
-		$khachhang=new khachhang;
-		$khachhang->tenKH=$request->ten;
-		$khachhang->email=$request->email;
-		$khachhang->soDienThoai=$request->sdt;
-		$khachhang->tenTaiKhoan=$request->username;
-		$khachhang->save();
-		return view('pages.dangky')->with('thongbao','thanhcong');
 
 
+			$taiKhoanKH=new taiKhoanKH;
+			$taiKhoanKH->tenTKKH=$request->username;
+			$taiKhoanKH->matKhauKh=$request->pass;
+			$taiKhoanKH->save();
+
+			$khachhang=new khachhang;
+			$khachhang->tenKH=$request->ten;
+			$khachhang->email=$request->email;
+			$khachhang->soDienThoai=$request->sdt;
+			$khachhang->tenTaiKhoan=$request->username;
+			$khachhang->save();
+			return view('pages.dangky')->with('thongbao','thanhcong');
+
+
+		}
+
+		public function getChiTiet(Request $rq)
+		{
+			$phim=phim::where('id',$rq->id)->first();
+			$rap=rapPhim::select()->get();
+			$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
+
+			return view('pages.chitietphim',compact('phim','rap','theloai'));
+		}
+
+		public function getTrangChu()	
+		{	
+			$phim=phim::select()->get();
+			$phimdc=phim::where('ngayKhoiChieu','<',date('y/m/d'))->get();
+			$phimsc=phim::where('ngayKhoiChieu','>',date('y/m/d'))->get();
+			
+
+			return view('pages.index',compact('phimsc','phimdc','phim'));
+		}
+		public function getThongTinKH(Request $rq)
+		{
+			$khachhang=khachhang::where('id',$rq->id)->first();
+			return view('pages.thongtinKH',compact('khachhang'));
+		}
 	}
-
-	public function getChiTiet(Request $rq)
-	{
-		$phim=phim::where('id',$rq->id)->first();
-		$rap=rapPhim::select()->get();
-		$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
-		return view('pages.chitietphim',compact('phim','rap','theloai'));
-	}
-
-	public function getTrangChu()	
-	{	
-		return view('pages.index');
-	}
-}
