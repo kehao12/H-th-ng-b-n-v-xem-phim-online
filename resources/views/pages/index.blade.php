@@ -63,9 +63,9 @@
 				<div class="frame">
 					<div class="slideImg">
 						@foreach($phimdc as $new)
-						<div class="slideChild">
-							<img src="images/{{$new->poster}}" style="width: 243px; height: 360px;" alt="" class="img-fluid">
-							<div class="layerSlideChild"></div>
+						<div class="slideChild" style="width: 243px;">
+							<img src="images/{{$new->poster}}" style="width: 243px; height: 360px;" alt="" >
+							<div class="layerSlideChild" style="width: 100%;height: 360px;"></div>
 							<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/{{$new->id}}">
 								<img class="play img-fluid" src="images/play-icon.png"></img>	
 							</a>
