@@ -10,6 +10,6 @@ class rapPhim extends Model
     protected $fillable = [ 'id','tenRap','diaChi'];
     public $timestamps=false;
     public function phongChieu(){
-    	return $this->hasMany('App\phongChieu','idRap');
+    	return $this->hasMany('App\phongChieu','idRap','id');
     }
 }

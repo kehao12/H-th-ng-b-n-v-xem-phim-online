@@ -1,0 +1,79 @@
+<div class="row">
+ <div class="col-12 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title text-center">LIST NHÂN VIÊN</h4>
+      <div class="single-table">
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead class="text-uppercase bg-primary">
+              <tr class="text-white">
+                <th scope="col">ID</th>
+                <th scope="col">TÊN</th>
+                <th scope="col">TÊN RAP PHIM</th>
+                <th scope="col">SL.A</th>
+                <th scope="col">SL.B</th>
+                <th scope="col">SL.C</th>
+                <th scope="col">SL.D</th>
+                <th scope="col">SL.E</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="pc in phongChieu" ng-init="pc.hienThi=true">
+              <tr ng-show="pc.hienThi">
+                <th scope="row">{{pc.id}}</th>
+                <td>{{pc.tenPC}}</td>
+                <td>{{pc.tenRap}}</td>
+                <td>{{pc.slA}}</td>
+                <td>{{pc.slB}}</td>
+                <td>{{pc.slC}}</td>
+                <td>{{pc.slD}}</td>
+                <td>{{pc.slE}}</td>
+                <td>
+                  <i class="fa fa-pencil" ng-click="showEdit(pc)" style="padding-right: 13px; cursor: pointer;"></i>
+                  <i class="ti-trash" ng-click="deletepc(pc.id)"></i>
+                </td>
+                <!-- edit data nhan vien</!-->
+                <tr ng-show="!pc.hienThi" >
+                  <th scope="row">{{pc.id}}</th>
+                  <td> <input type="text" class="form-control" ng-model="pc.tenPC" minlength="3" maxlength="20" required>
+                  </td>
+                  <td> 
+                     <select name=rapPhim  class="form-control" ng-model="pc.idRap">
+                           <option ng-repeat="value in rp" value="{{value.id}}">{{value.tenRap}}</option>
+                       </select>
+                  </td>
+                  <td>
+                   <select name=rapPhim  class="form-control" ng-model="pc.slA" ng-options="item for item in soLuong">
+                  </td>
+                  <td> 
+                 <select name=rapPhim  class="form-control" ng-model="pc.slB" ng-options="item for item in soLuong">
+                 </td>
+                  <td> 
+                 <select name=rapPhim  class="form-control" ng-model="pc.slC" ng-options="item for item in soLuong">
+                 </td>
+                  <td> 
+                 <select name=rapPhim  class="form-control" ng-model="pc.slD" ng-options="item for item in soLuong">
+                 </td>
+                  <td> 
+                 <select name=rapPhim  class="form-control" ng-model="pc.slE" ng-options="item for item in soLuong">
+                 </td>
+                <td>
+                  <i class="fa fa-check" ng-click=" editPC(pc)" style="padding-right: 13px; cursor: pointer;"></i> 
+                   <i class="fa fa-close" ng-click="show(pc)" style="cursor: pointer;"></i>                            
+                </td>
+              </tr>
+
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

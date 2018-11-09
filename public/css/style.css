@@ -27,24 +27,22 @@
 @font-face{font-family:ubuntu; src:url('../fonts/unbutu/Ubuntu-Light.ttf') format('truetype'),url('../fonts/unbutu/Ubuntu-Regular.ttf') format('truetype'),url('../fonts/unbutu/Ubuntu-Medium.ttf') format('truetype');font-weight:normal;
  font-style:normal;}
 @font-face{font-family: roboto; src:url('../fonts/roboto/Roboto-Regular.ttf') format('truetype'),url('../fonts/Roboto-Medium.ttf') format('truetype'),
-	url('../fonts/roboto/Roboto-Bold.ttf') format('truetype'),url('../fonts/roboto/Roboto-Light.ttf') format('truetype');font-weight:normal;font-style:normal;
+    url('../fonts/roboto/Roboto-Bold.ttf') format('truetype'),url('../fonts/roboto/Roboto-Light.ttf') format('truetype');font-weight:normal;font-style:normal;
 }
 /* end font */
 
 
-/* ----Đăng nhập start-----
+/* ----ÄÄƒng nháº­p start-----
  */
 .cha{
-    position: relative;
 }
 .cha img.banner {
-    height: 657px;
 }
-form.form-dn{ 
+form.form-dn{
     width: 400px;
-    height: 450px; 
+    height: 450px;
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 35%;
     background: #28282d;
     border-radius: 5px;
@@ -106,14 +104,15 @@ h1 a {
     text-decoration: none;
     font-size: 15px;
 }
-/* ----Đăng nhập end----*/
+/* ----ÄÄƒng nháº­p end----*/
 
-/*-------Đăng ký start-------*/
+/*-------ÄÄƒng kÃ½ start-------*/
 .cha{
     position: relative;
+    height: 667px;
 }
 .cha img.banner {
-    height: 645px;
+    height: 100%;
 }
 form.form-dk{ 
     width: 400px;
@@ -171,7 +170,7 @@ form.form-dk .nutSubmit input{
     color: white;
     text-indent: 0%;
 }
-/*-------Đăng ký end-------*/
+/*-------ÄÄƒng kÃ½ end-------*/
 
 
 /*  header  */
@@ -285,7 +284,7 @@ header .layerCha .slideImg .slideChild .ndPhim h4 a{color:#ff5860; }
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a{transition: 0.3s;text-decoration: none;    color: #35de33;font-size: 30px;cursor: pointer;}
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a:hover{ color: #b7ea91;}
 /*  so ghe */
-.lichChieu .numberGhe{width: 50%;height: 410px;position: absolute;top: 31%;left: 27%;background: #212529;opacity: 0;visibility: hidden;}
+.lichChieu .numberGhe{width: 50%;height: 410px;position: fixed;top: 31%;left: 27%;background: #212529;opacity: 0;visibility: hidden;z-index: 10;}
 .lichChieu .showNumberGhe{animation: showNumberGhe 0.5s;top: 31%;opacity: 1;visibility: visible;}
 .lichChieu .hideNumberGhe{animation: hideNumberGhe 0.5s;}
 .lichChieu .numberGhe:before{content:'';background: url(../images/closeIcon.png);width: 32px;height: 32px;position: absolute;right: -2%;top: -3%;background-size: 30px 30px;background-repeat: no-repeat;cursor: pointer;}
@@ -352,5 +351,6 @@ header .header1 ul li h5.choseShow:before{content: '';position: absolute;bottom:
     height: 880px;
     position: relative;}
 .qlNhanVien1,.qlNhanVien2{position: absolute;top: 0;left: 0;}
+
 /* end admin */
 

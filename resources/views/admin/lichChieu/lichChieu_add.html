@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-12 mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="header-title text-center">Thêm Lịch Chiếu</h4>
+        <form  method="post" name="f1" novalidate>
+          <div class="form-group row">
+            <label for="exampleInput" class="col-2 col-form-label">Tên Rạp Chiếu </label>
+            <select name=rapPhim  class="form-control col-10" ng-model="idRap" ng-change="showPC(idRap)">
+             <option ng-repeat="value in rp" value="{{value.id}}">{{value.tenRap}}</option>
+           </select>              
+         </div>    
+         <div class="form-group row">
+          <label class="col-2 col-form-label">Phòng Chiếu :</label>
+          <select name=phogChieu  class="form-control col-10" ng-model="idPC">
+           <option ng-repeat="ele in pcByID" value="{{ele.id}}">{{ele.tenPC}}</option>
+         </select>
+       </div>
+       <div class="form-group row">
+        <label class="col-2 col-form-label">Ngày Chiếu</label>
+        <md-datepicker ng-model="ngayC.date" md-min-date="ngayC.minDate"  md-placeholder="Enter date"></md-datepicker>
+      </div>
+       <div class="form-group row">
+            <label for="exampleInput" class="col-2 col-form-label">Thể Loại </label>
+            <select  class="form-control col-10" ng-model="idTL" ng-change="showPhim(idTL)">
+             <option ng-repeat="tl in theloai" value="{{tl.id}}">{{tl.tenTL}}</option>
+           </select>              
+         </div>
+         <div class="form-group row">
+          <label class="col-2 col-form-label">Phim :</label>
+          <select  class="form-control col-10" ng-model="idPhim">
+           <option ng-repeat="mv in movies" value="{{mv.id}}">{{mv.tenPhim}}</option>
+         </select>
+       </div>   
+         <div class="form-group row">
+            <label for="exampleInput" class="col-2 col-form-label">Suất Chiếu </label>
+            <select  class="form-control col-10" ng-model="idSC">
+             <option ng-repeat="sc in suatChieu" value="{{sc.id}}">{{sc.gioChieu | date: "HH:mm:ss"}}</option>
+           </select>              
+         </div>
+      <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addLichChieu()">Thêm</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>

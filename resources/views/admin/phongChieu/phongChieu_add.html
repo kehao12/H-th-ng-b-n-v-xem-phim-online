@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title text-center">Thêm Phòng Chiếu</h4>
+                <form  method="post" name="f1" novalidate>
+                    <div class="form-group">
+                        <label for="exampleInput">Tên Phòng Chiếu</label>
+                        <input type="text" class="form-control" placeholder="Enter name"  ng-model="namePC" minlength="3" maxlength="20"         required>                  
+                    </div>    
+                    <div class="form-group">
+                        <label >Rạp phim</label>
+                        <select name=rapPhim  class="form-control" ng-model="idRap">
+                           <option ng-repeat="value in rp" value="{{value.id}}">{{value.tenRap}}</option>
+                       </select>
+                   </div>
+                   <div class="form-group">
+                    <label >Số lượng ghế dãy A:</label>
+                    <select name=rapPhim  class="form-control" ng-model="slA" ng-options="item for item in soLuong">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label >Số lượng ghế dãy B:</label>
+                    <select name=rapPhim  class="form-control" ng-model="slB" ng-options="item for item in soLuong">
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label >Số lượng ghế dãy C:</label>
+                    <select name=rapPhim  class="form-control" ng-model="slC" ng-options="item for item in soLuong">
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label >Số lượng ghế dãy D:</label>
+                    <select name=rapPhim  class="form-control" ng-model="slD" ng-options="item for item in soLuong">
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label >Số lượng ghế dãy E:</label>
+                    <select name=rapPhim  class="form-control" ng-model="slE" ng-options="item for item in soLuong">
+                    </select>
+                </div>
+                
+                <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addInfoPC()">Lưu</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

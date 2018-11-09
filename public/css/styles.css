@@ -1784,6 +1784,10 @@ table.dbkit-table tr td {
     letter-spacing: 0;
 }
 
+.nutInfoMV {
+    width: 100%;
+}
+
 .btn-xl {
     padding: 19px 24px;
 }
@@ -2826,5 +2830,8 @@ table.dataTable thead td {
     font-size: 16px;
     color: #555;
 }
-
+.nutSubmit{    width: 355px;margin: auto;display: block;}
+.fmEditMovie{    background: rgb(247, 241, 241);}
+.infoMV p{ padding-left: 5%;    padding-top: 1%; }
+.infoMV img{     padding-bottom: 10px; }
 /*-------------------- END Offset Sidebar ------------------- */
