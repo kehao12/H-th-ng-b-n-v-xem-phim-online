@@ -2,7 +2,6 @@
 var value=0,count=0,kiemTraSearch=0;
 var x,urlImg;
 
-
 $(function(){
 
 
@@ -42,6 +41,7 @@ $(function(){
 	/* menu scroll*/
 	$(window).scroll(function(event) {
 		var vitri=$("html").scrollTop();
+		console.log(vitri);
 		if(vitri > 90){
 			$('.allMenu').addClass('allMenuZoom');
 			$('.menu').addClass('menuZoom');
@@ -195,6 +195,52 @@ $(function(){
 	/* end dat ve*/
 
 	/* admin*/
+<<<<<<< HEAD
 	/* end admin*/
+=======
+
+		$('.menu_tab .tablinks').click(function() {
+		/* Act on the event */
+		console.log('dsd');
+		$('.tablinks').removeClass('active');
+		$(this).addClass('active');
+		var getIndexButtonTab =$('.tablinks').index(this);
+		$('.contentMovies1').css('display', 'none');
+		$('.contentMovies1:nth-child('+(getIndexButtonTab+1)+')').css('display','block');
+	});
+	/* end movie tab !!!*/
+>>>>>>> hao1
 	/* end function*/
 });
+
+	/* move tab !!!!*/
+
+/*Choice Day*/
+$(function(){
+	var day = document.getElementsByClassName('date_list');
+
+	for (var i = 0; i < day.length; i++) {
+		day[i].addEventListener("click", function(){
+			for (var i = 0; i < day.length; i++) {
+				day[i].classList.remove("active");
+			}
+			this.className += " active";
+		});
+	}
+	});
+/*End CHoice Day*/
+/*Choice Time*/
+$(function(){
+	var time = document.getElementsByClassName('time');
+
+	for (var i = 0; i < time.length; i++) {
+		time[i].addEventListener("click", function(){
+			for (var i = 0; i < time.length; i++) {
+				time[i].classList.remove("active");
+			}
+			this.className += " active";
+		});
+	}
+
+});
+/*End Choice Time*/

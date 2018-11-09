@@ -11,10 +11,14 @@ class phongChieu extends Model
     public $timestamps=false;
     public function rapPhim()
     {
+<<<<<<< HEAD
     	return $this->belongsTo('App\rapPhim','idRap');
     }
     public function suatChieu()
     {
     	return $this->belongsToMany('App\suatChieu','phansuatchieu','idPC','idSC');
+=======
+    	return $this->belongsTo('App\rapPhim','idRap','id');
+>>>>>>> hao1
     }
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php $url="http://localhost:8080/PROJECT/Cinema/public/logInAD#/"; ?>
+=======
+<?php $url="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/logInAD#/"; ?>
+>>>>>>> hao1
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -21,7 +25,10 @@
 	<!-- Responsive datatable examples -->
 	<link href="<?php echo asset('') ?>css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo asset('') ?>css/select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> hao1
 	<!-- others css -->
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/typography.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/default-css.css">
@@ -29,6 +36,7 @@
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/responsive.css">
 	<!-- modernizr css -->
 	<script src="<?php echo asset('') ?>js/modernizr-2.8.3.min.js"></script>
+
 </head>
 <body >
 	
@@ -51,8 +59,13 @@
 								<a href="" aria-expanded="true"><i class="ti-layout-sidebar-left "></i><span>QL NHÂN VIÊN
 								</span></a>
 								<ul class="collapse">
+<<<<<<< HEAD
 									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvAdd">THÊM MỚI</a></li>
 									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">SỬA THÔNG TIN</a></li>
+=======
+									<li><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/logInAD#/nvAdd">Thêm Mới</a></li>
+									<li><a href="http://localhost:8080/PROJECT/Cinema/public/logInAD#/nvEdit">Sửa Thông Tin</a></li>
+>>>>>>> hao1
 								</ul>
 							</li>
 							<li>
@@ -73,6 +86,7 @@
 							<li>
 								<a href="#" aria-expanded="true"><i class="ti-slice"></i><span>QL Phim</span></a>
 								<ul class="collapse">
+<<<<<<< HEAD
 									<li><a href="<?php echo $url; ?>phimAdd">THÊM MỚI</a></li>
 									<li><a href="<?php echo $url; ?>phimEdit">SỬA THÔNG TIN</a></li>
 								</ul>
@@ -90,6 +104,13 @@
 								
 							</li>
 							<li>
+=======
+									<li><a href="<?php echo $url; ?>phimAdd">Thêm Mới</a></li>
+									<li><a href="<?php echo $url; ?>phimEdit">Sửa Thông Tin</a></li>
+								</ul>
+							</li>
+							<li>
+>>>>>>> hao1
 								<a href="<?php echo $url; ?>tl" aria-expanded="true"><i class="fa fa-table"></i>
 									<span>QUẢN LÝ THỂ LOẠI</span></a>		
 								</li>	
@@ -98,10 +119,13 @@
 										<span>Danh Sách Vé</span></a>		
 									</li>							
 									<li>
+<<<<<<< HEAD
 									<a href="#" aria-expanded="true"><i class="fa fa-table"></i>
 										<span>DANH SÁCH KHÁCH HÀNG</span></a>		
 									</li>							
 									<li>
+=======
+>>>>>>> hao1
 										<a href=#" aria-expanded="true"><i class="fa fa-table"></i>
 											<span>Thống Kê</span></a>		
 										</li>		
@@ -191,6 +215,10 @@
 				<!-- Key Tables -->
 				<script src="<?php echo asset('') ?>js/dataTables.keyTable.min.js"></script>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> hao1
 				<!-- angularjs </!-->
 
 				<script type="text/javascript" src="<?php echo asset('') ?>js/bootstrap.js"></script>  
@@ -201,12 +229,51 @@
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-material.min.js"></script>  
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-route.min.js"></script>  
 				<script type="text/javascript" src="<?php echo asset('') ?>js/functionAngular.js"></script>  
+<<<<<<< HEAD
 				<script type="text/javascript" src="<?php echo asset('') ?>js/moment.min.js"></script>  
+=======
+>>>>>>> hao1
 				<!-- end angularjs </!-->
 				<!-- others plugins -->
 				<script src="<?php echo asset('') ?>js/plugins.js"></script>
 				<script src="<?php echo asset('') ?>js/scripts.js"></script>
+<<<<<<< HEAD
 				
+=======
+				<script type="text/javascript">
+					$(document).ready(function() {
+
+                // Default Datatable
+                $('#datatable').DataTable();
+
+                //Buttons examples
+                var table = $('#datatable-buttons').DataTable({
+                	lengthChange: false,
+                	buttons: ['copy', 'excel', 'pdf']
+                });
+
+                // Key Tables
+
+                $('#key-table').DataTable({
+                	keys: true
+                });
+
+                // Responsive Datatable
+                $('#responsive-datatable').DataTable();
+
+                // Multi Selection Datatable
+                $('#selection-datatable').DataTable({
+                	select: {
+                		style: 'multi'
+                	}
+                });
+
+                table.buttons().container()
+                .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+            } );
+
+        </script>
+>>>>>>> hao1
 
     </body>
     </html>
