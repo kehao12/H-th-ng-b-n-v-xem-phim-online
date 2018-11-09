@@ -23,29 +23,26 @@ class PageController extends Controller
 	{
 		
 
-		$this->validate($this,
+		$this->validate($request,
 			[
-				'username'=>'require|min:3|max:20|unique:taiKhoanKH:tenTKKH',
-				'pass'=>'require|min:3|max:50',
-				'pass1'=>'require|same:pass',
-				'ten'=>'require',
-				'sdt'=>'require',
-				'email'=>'require|email',
+				'username'=>'required|min:3|max:20|unique:taiKhoanKH:tenTKKH',
+				'pass'=>'required|min:3|max:50',
+				'pass1'=>'required|same:pass',
+				'ten'=>'required',
+				'sdt'=>'required',
+				'email'=>'required|email'
 
 			],[
-				'username.require'=>'Chua nhap tai khoan',
+				'username.required'=>'Nhập đủ thông tin',
 				'username.min'=>'Nhap kho duoc it hon 3 ky tu',
 				'username.max'=>'Nhap khong qua 20 ky tu',
-				'pass.require'=>'Chua nhap pass',
-				'email.require'=>'Chua nhap email',
+				'pass.required'=>'Nhập đủ thông tin',
+				'email.required'=>'Nhập đủ thông tin',
 				'email.email'=>'Chua sai email',
 				'pass1.same'=>'Mat khau khong giong nhau',
-				'ten.require'=>'Nhap ten',
-				'sdt.require'=>'Nhap sdt',
-				'username.unique'=>'Tai khoan da ton tai',
-			],[
-
-
+				'ten.required'=>'Nhập đủ thông tin',
+				'sdt.required'=>'Nhập đủ thông tin',
+				'username.unique'=>'Tai khoan da ton tai'
 			]);
 
 
@@ -87,5 +84,16 @@ class PageController extends Controller
 		{
 			$khachhang=khachhang::where('id',$rq->id)->first();
 			return view('pages.thongtinKH',compact('khachhang'));
+		}
+		public function getThayThongTin()
+		{
+			return view('pages.thaythongtin');
+		}
+		public function postThayThongTin(Request $rq)		
+		{
+			$khachhang=new khachhang;
+			$khachhang->tenKH=$rq->name;
+			$khachhang->where('id',$rq->id)->update(['tenKH'=>$rq->name,'email'=>$rq->email,'soDienThoai'=>$rq->sdt]);
+			return redirect()->back();
 		}
 	}
