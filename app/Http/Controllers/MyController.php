@@ -16,6 +16,9 @@ use App\phongChieu;
 use App\taiKhoanKH;
 use App\theLoai;
 use App\phim;
+use App\suatChieu;
+use App\lichChieu;
+use App\phansuatchieu;
 use DB;
 class MyController extends Controller
 {
@@ -262,4 +265,80 @@ public function upLoadImg(Request $rq)
       return 1;
     }
     /* END QL PHONG CHIEU*/
+    /* QL LICH CHIEU*/
+    public function getListPCbyID($id)
+    {
+      $pc = new phongChieu;
+      $data=$pc->where('idRap',$id)->select('*')->get()->toJson();
+      return $data;
+    }
+    public function getListPhimById($id)
+    {
+       $phim = new phim;
+       $data=$phim->where('idTL',$id)->select('*')->get()->toJson();
+       return $data;
+    }
+    public function getListSCforLC()
+    {
+      $sc = new suatChieu;
+       $data=$sc->select('gioChieu')->get()->toArray();
+      
+       return $data;
+    }
+    public function addLC(Request $rq)
+    {
+      $psc=new phansuatchieu;
+      $lc = new lichChieu;
+      $psc->idPC=$rq->idPC;
+      $psc->idSC=$rq->idSC;
+      $psc->save();
+      $lc->idPhim=$rq->idPhim;
+      $lc->idSC=$rq->idSC;
+      $lc->ngayChieu=$rq->ngayC;
+      $lc->save();
+      return 1;
+
+    }
+    public function getListLC()
+    {
+       $lc= new lichChieu;
+       $data=$lc->select('*')->get()->toJson();
+       return $data; 
+    }
+    public function editLC($id, Request $rq)
+    {
+      $lc = new lichChieu;
+      $lc->where('id',$id)->update(['idPhim'=>$rq->idPhim,'idSC'=>$rq->idSC,'ngayChieu'=>$rq->ngayChieu]);
+      return 1;
+    }
+    /* END QK LICH CHIEU*/
+    /* QL SUAT CHIEU*/
+    public function addSC(Request $rq)
+    {
+      $sc= new suatChieu;
+      $sc->gioChieu=$rq->timesc;
+      $sc->save();
+      return 1;
+    }
+    public function getListSC()
+    {
+      # code...
+      $sc= new suatChieu;
+      $data = $sc->select('*')->get()->toJson();
+   
+      return $data;
+    }
+    public function editSC($id, Request $rq)
+    {
+      $sc = new suatChieu;
+      $sc->where('id',$id)->update(['gioChieu'=>$rq->timesc]);
+      return 1;
+    }
+    public function deleteSC($id)
+    {
+      $sc = suatChieu::findOrFail($id);
+      $sc->delete();
+      return 1;
+    }
+    /* END QL SUAT CHIEU*/
 }

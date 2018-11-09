@@ -18,4 +18,8 @@ class phim extends Model
     {
     	return $this->belongsTo('App\theLoai','idTL');
     }
+    public function suatChieu()
+    {
+        return $this->belongsToMany('App\suatChieu','lichChieu','idPhim','idSC');
+    }
 }

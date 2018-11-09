@@ -84,6 +84,11 @@
 									<li><a href="<?php echo $url; ?>lichChieuEdit">SỬA THÔNG TIN</a></li>
 								</ul>
 							</li>
+
+							<li>
+								<a href="<?php echo $url; ?>suatChieu"" aria-expanded="true"><i class="ti-slice"></i><span>QL SUẤT CHIẾU</span></a>
+								
+							</li>
 							<li>
 								<a href="<?php echo $url; ?>tl" aria-expanded="true"><i class="fa fa-table"></i>
 									<span>QUẢN LÝ THỂ LOẠI</span></a>		

@@ -83,4 +83,17 @@ Route::get('user',function(){
 });
 Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
 /*END DN KH*/
-
+/* QL LICH CHIEU*/
+Route::post('listPCbyID/{id}','MyController@getListPCbyID');
+Route::post('listPhimById/{id}','MyController@getListPhimById');
+Route::get('getListSCforLC','MyController@getListSCforLC');
+Route::post('addLC', 'MyController@addLC');
+Route::get('getListLC','MyController@getListLC');
+Route::post('editLC/{id}','MyController@editLC');
+/* QL END LICH CHIEU*/
+/* QL SUAT CHIEU*/
+Route::post('addSC', 'MyController@addSC');
+Route::get('getListSC','MyController@getListSC');
+Route::post('editsc/{id}','MyController@editSC');
+Route::post('deletesc/{id}','MyController@deleteSC');
+/* END QL SUAT CHIEU*/

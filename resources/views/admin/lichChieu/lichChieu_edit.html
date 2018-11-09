@@ -1,0 +1,60 @@
+<div class="col-12 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title text-center">LIST LỊCH CHIẾU</h4>
+      <div class="single-table">
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead class="text-uppercase bg-primary">
+              <tr class="text-white">
+                <th scope="col">ID</th>
+                <th scope="col">IdPhim</th>
+                <th scope="col">IdSC</th>
+                <th scope="col">Ngày Chiếu</th>             
+                <th scope="col">XỬ LÝ</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="lc in lichChieu" ng-init="lc.hienThi=true">
+              <tr ng-show="lc.hienThi">
+                <th scope="row">{{lc.id}}</th>
+                <th scope="row">{{lc.idPhim}}</th>
+                <th scope="row">{{lc.idSC}}</th>
+                <td>{{lc.ngayChieu}}</td>           
+                <td>
+                  <i class="fa fa-pencil" ng-click="showEdit(lc)" style="padding-right: 13px; cursor: pointer;"></i>
+                  <i class="ti-trash" ng-click="deleteLC(lc.id)"></i>
+                </td>
+                <!-- edit data nhan vien</!-->
+                <tr ng-show="!lc.hienThi" >
+                  <th scope="row">{{lc.id}}</th>
+                  <td>
+                    <select  class="form-control col-10" ng-model="lc.idPhim">
+                     <option ng-repeat="mv in movies" value="{{mv.id}}">{{mv.tenPhim}}</option>
+                   </select>
+                  </td>
+                 <td>
+                  <select  class="form-control col-10" ng-model="lc.idSC">
+                   <option ng-repeat="sc in suatChieu" value="{{sc.id}}">{{sc.gioChieu | date: "HH:mm:ss"}}</option>
+                 </select>              
+               </td>
+               <td>
+                 <md-datepicker ng-model="lc.date" md-min-date="lc.ngayChieu.minDate"  md-placeholder="{{lc.ngayChieu}}"></md-datepicker>
+               </td>
+               <td>
+                <i class="fa fa-check" ng-click=" editLC(lc)" style="padding-right: 13px; cursor: pointer;"></i>  
+                <i class="fa fa-close" ng-click="show(lc)" style="cursor: pointer;"></i>                               
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+
+      </div>
+      <div class="form-group row">
+            <label for="exampleInput" class="col-2 col-form-label">Thể Loại </label>
+            <select  class="form-control col-10" ng-model="idTL" ng-change="showPhim(idTL)">
+             <option ng-repeat="tl in theloai" value="{{tl.id}}">{{tl.tenTL}}</option>
+           </select>              
+         </div>
