@@ -59,6 +59,9 @@
 								</div>
 							</div>
 						</div>
+						<div class="nutthaytt">
+							<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/thaythongtin/{{$khachhang->id}}">Thay Đổi Thông Tin</a>
+						</div>
 					</div>
 				</div>
 			</div>
