@@ -93,24 +93,21 @@ class MyController extends Controller
 
      /*$data = DB::table('nhanVien')->join( 'users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.password','users.quyen')->get()->toJson();
 */
-<<<<<<< HEAD
       $nhanvien = new nhanVien;
       $data= $nhanvien->join('users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.quyen')->get()->toJson();
-=======
+
      $nhanvien = new nhanVien;
      $data= $nhanvien->join('users','nhanVien.tenTaiKhoan','=','users.tenTK')->select('nhanVien.*','users.password','users.quyen')->get()->toJson();
->>>>>>> hao1
 
      return $data;
  }
  public function editNV($id, Request $rq)
  {
-<<<<<<< HEAD
      $nhanvien=new nhanvien;
      $users = new taiKhoanAD;
     $nhanvien->where('id',$id)->update(['ten'=>$rq->ten,'gioitinh'=>$rq->gioitinh,'diachi'=>$rq->diaChi]);
     $users->where('tenTK',$rq->taiKhoan)->update(['quyen'=>$rq->quyen]);
-=======
+
    $nhanvien=new nhanvien;
    $users = new taiKhoanAD;
    $nhanvien->where('id',$id)->update(['ten'=>$rq->ten,'gioitinh'=>$rq->gioitinh,'diachi'=>$rq->diachi,'tenTaiKhoan'=>$rq->taiKhoan]);
@@ -129,7 +126,6 @@ public function themRapPhim(Request $rq)
     $rapPhim->tenRap=$rq->tenRap;
     $rapPhim->diaChi=$rq->diaChi;
     $rapPhim->save();
->>>>>>> hao1
     return 1;
 }
 public function getListRap()

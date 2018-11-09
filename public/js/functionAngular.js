@@ -30,18 +30,18 @@
  		controller:'ql_Phim'
  	})
  	.when('/phimEdit', {
-<<<<<<< HEAD
+
  		templateUrl:urlLocal+ 'admin/phim/phim_edit.html',
-=======
+
  		templateUrl:urlLocal+ 'admin/phim/phim_Edit.html',
->>>>>>> hao1
+
  		controller: 'ql_Phim'
  	})
  	.when('/tl',{
  		templateUrl:urlLocal+'admin/theLoai/theLoaiView.html',
  		controller:'theloai'
  	})
-<<<<<<< HEAD
+
  	.when('/pcAdd', {
  		templateUrl: urlLocal+'admin/phongChieu/phongChieu_add.html',
  		controller: 'qlPhongChieu'
@@ -64,16 +64,15 @@
  	})	
  	.otherwise({ redirectTo: '/' })
  });
- app.config(['$mdThemingProvider', function ($mdThemingProvider) {
+ /*app.config(['$mdThemingProvider', function ($mdThemingProvider) {
  	'use strict';
 
  	$mdThemingProvider.theme('default')
  	.primaryPalette('blue');
  }])
-=======
 
  	.otherwise({ redirectTo: '/' })
- });
+ });*/
  app.directive('fileInput', function ($parse) {
  	return {
  		link: function ($scope, $iElement, $iAttrs) {
@@ -86,7 +85,7 @@
  		}
  	};
  })
->>>>>>> hao1
+
  app.controller('themNhanVien',function ($scope,$http,$mdToast) {
  	$scope.addInfo=function(){
  		var urlCon='http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/addNhanVien';
@@ -491,19 +490,13 @@
  		$http.post(API+"editTL/"+val.id,data,config)
  		.then(function(res){
  			if(res.data == 1)	{	
-<<<<<<< HEAD
+
  				$scope.showMessg('Cập nhập thành công');
  				val.hienThi=!val.hienThi;
  			}
  		},function(er){
- 			$scope.showMessg('Cập nhập thất bại');
-=======
- 				$scope.showMessg('Edit thành công');
- 				val.hienThi=!val.hienThi;
- 			}
- 		},function(er){
  			$scope.showMessg('Edit thất bại');
->>>>>>> hao1
+
  			console.log(er.data);
  			
  		})
@@ -572,7 +565,7 @@
 
  /* edn the loai*/
  /* ql phim*/
-<<<<<<< HEAD
+
  app.controller('ql_Phim', function($scope,$http,API,$mdToast){
  	$http.get(API+'listTL').success(function(response){
  		$scope.tL=response;
@@ -1293,7 +1286,6 @@ $scope.showMessg = function(thongbao) {
 
     });
  /* END QL SUAT CHIEU*/
-=======
   app.controller('ql_Phim', function($scope,$http,API,$mdToast){
  	$http.get(API+'listTL').success(function(response){
  		$scope.tL=response;
@@ -1435,4 +1427,4 @@ $scope.showMessg = function(thongbao) {
  });
 
  /* end ql phim*/
->>>>>>> hao1
+

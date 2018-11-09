@@ -27,15 +27,14 @@ Route::get('lienket', function() {
     var_dump($data);
     echo "</pre>";
 });
-<<<<<<< HEAD
+ 
 Route::get('lienket1', function() {
     $data=App\phongChieu::find(13)->rapPhim->toArray();
     echo "<pre>";
-    var_dump($data);
+    var_dump($data);   
     echo "</pre>";
 });
-=======
->>>>>>> hao1
+ 
 Route::get('phongchieu',function()
 {
     $kq=App\phongChieu::find(2)->rapPhim->toArray();
@@ -66,7 +65,7 @@ Route::post('deleteTL/{id}', 'MyController@deleteTL');
 /* ql PHIM*/
 Route::post('addPhim','MyController@addPhim');
 Route::post('upImg','MyController@upImg');
-<<<<<<< HEAD
+ 
 
 Route::post('upLoadImg','MyController@uploadImg');
 Route::get('listMV','MyController@getListMV');
@@ -81,16 +80,16 @@ Route::post('addPC','MyController@addPC');
 Route::post('editPC/{id}','MyController@editPC');
 Route::post('deletePC/{id}','MyController@deletePC');
 /* END QL PHONG CHIEU*/
-=======
+ 
 /* END QL PHIM*/
->>>>>>> hao1
+ 
 /*Dang Nhap KH*/
 Route::get('user',function(){
     return view('logInKH');
 });
 Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
 /*END DN KH*/
-<<<<<<< HEAD
+ 
 /* QL LICH CHIEU*/
 Route::post('listPCbyID/{id}','MyController@getListPCbyID');
 Route::post('listPhimById/{id}','MyController@getListPhimById');
@@ -105,7 +104,7 @@ Route::get('getListSC','MyController@getListSC');
 Route::post('editsc/{id}','MyController@editSC');
 Route::post('deletesc/{id}','MyController@deleteSC');
 /* END QL SUAT CHIEU*/
-=======
+ 
 Route::get('dangky','PageController@getdangky');
 Route::post('dangky',['as' =>'dangky','uses'=>'PageController@postdangky']);
 
@@ -115,4 +114,4 @@ Route::get('trangchu',['as'=>'trangchu','uses'=>'PageController@getTrangChu']);
 Route::get('thongtinkh/{id}',['as'=>'thongtinkh','uses'=>'PageController@getThongTinKH']);
 Route::get('thaythongtin/{id}',['as'=>'thaythongtin','uses'=>'PageController@getThayThongTin']);
 Route::post('thaythongtin/{id}',['as'=>'thongtinkh','uses'=>'PageController@postThongTinKH']);
->>>>>>> hao1
+ 
