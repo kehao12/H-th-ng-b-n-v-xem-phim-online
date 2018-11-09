@@ -84,8 +84,8 @@
 		color: #e9e9e9;
 	}
 	span.times {
-    color: #e9e9e9;
-}
+		color: #e9e9e9;
+	}
 	.detail_main .info .times{
 		color: #e9e9e9;
 		font-size: 14px;	
@@ -132,7 +132,7 @@
 		height: 60px;
 		margin-top: 30px;
 		font-size: 24px;
-		    margin-left: 395px;
+		margin-left: 395px;
 	}
 	.menu_tab button{
 		background-color: inherit; 
@@ -243,4 +243,78 @@
 		color: red;
 	}
 
-	/* ------*/
+	
+	.taikhoan{
+		padding-top: 0;
+		border-top: none;
+		position: relative;
+		padding: 10px 0 0;	
+		margin-bottom: 5px;
+		color: #e71a0f;
+	}
+
+	.taikhoan h1{
+		
+		font-size: 22px;
+
+	}
+	.menu_info{
+		background: url(../images/ribon_left.png) no-repeat scroll left center #e71a0f;color: #fff;
+		padding-left: 18px;margin-top: 10px;
+	}
+	
+
+	.thongtin{
+
+		width: 100%;
+		background-color: #fdfcf0;
+		height: 500px;
+	}
+	.tit_tk {
+
+		width: 100%;
+		text-align: center;
+		margin-top: 10px;
+		background: #222;
+		height: 34px;
+		margin-bottom: 10px;
+	}
+	.tit_tk h1{
+		color: #fff;
+		text-transform: uppercase;
+		line-height: 34px;
+		text-align: center !important;
+		font-size: 22px;
+	}
+	.nd{
+		margin-top:5px;
+	}
+	.nd label{
+		font-weight: 700;
+	}
+	.nutthaytt {
+    border: solid 1px #E71A0F;
+    margin: 10px;
+    width: 180px;
+    height: 30px;
+    text-align: center;
+    background: #E71A0F;
+    margin: 0 auto;
+    margin-top: 40px;
+
+}
+.nutthaytt a{
+	 color: white;
+}
+.nutthaytt a:hover{
+	text-decoration: none;
+	color: white;
+}
+.nut{
+	    width: 200px;
+    margin-top: 35px;
+    background: #e71a0f;
+    border: #e71a0f;
+    color: white;
+    height: 30px;
+}
