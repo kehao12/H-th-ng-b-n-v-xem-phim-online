@@ -65,8 +65,9 @@ class PageController extends Controller
 		public function getChiTiet(Request $rq)
 		{
 			$phim=phim::where('id',$rq->id)->first();
-			$rap=rapPhim::select()->get();
 			$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
+
+
 
 			return view('pages.chitietphim',compact('phim','rap','theloai'));
 		}
@@ -76,6 +77,7 @@ class PageController extends Controller
 			$phim=phim::select()->get();
 			$phimdc=phim::where('ngayKhoiChieu','<',date('y/m/d'))->get();
 			$phimsc=phim::where('ngayKhoiChieu','>',date('y/m/d'))->get();
+		
 			
 
 			return view('pages.index',compact('phimsc','phimdc','phim'));
