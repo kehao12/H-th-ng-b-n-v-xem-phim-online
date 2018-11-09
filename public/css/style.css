@@ -188,7 +188,7 @@ header .layerCha .slide h1{padding-right: 60%;    font-family: roboto,sans-serif
 header .layerCha .slideCha{    top: 34%; position: absolute;left: 7%;width: 87%;}
 header .layerCha .slideCha .frame{ position: relative;   overflow: hidden;}
 header .layerCha .slideImg{    width: 2300px;height: 410px;}
-header .layerCha .slideImg .slideChild {float: left;padding-left: 1%; transition: 0.9s;    position: relative;    transform: translateX(0) scale(0.9);}
+header .layerCha .slideImg .slideChild {float: left;padding-left: 1%; transition: 0.9s; width: 243px;   position: relative;    transform: translateX(0) scale(0.9);}
 header .layerCha .slideImg .kichHoatSlide {transform: scale(1) !important;}
 header .layerCha .slideImg .slideChild .play{position: absolute;top: 37%;left: 41%;width: 25%;z-index: 4;transition: 0.5s;opacity: 0;cursor: pointer;}
 header .layerCha .slideImg .slideChild .layerSlideChild{width: 270px;height: 400px;position: absolute;top: 0;opacity: 0; transition: 0.5s;    z-index: 2;}
