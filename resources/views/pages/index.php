@@ -70,8 +70,8 @@
 								<img class="play img-fluid" src="images/play-icon.png"></img>	
 							</a>
 							<div class="ndPhim">
-								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/{{$new->id}}">{{$new->tenPhim}}</a></h3>
-								<h4><a ><?php $new->thoiLuong ?> phút</a></h4>
+								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $new->id ?>"><?php echo $new->tenPhim ?></a></h3>
+								<h4><a ><?php echo $new->thoiLuong ?> phút</a></h4>
 							</div>
 						</div>
 					 <?php } ?>
@@ -111,297 +111,70 @@
 			<div class="cateMove movieActive">
 				<div class="container">
 					<div class="row">
-						@foreach($phim as $a)
+						<?php foreach($phim as $a){ ?>
 						<div class="col-sm-4 col-md-2">
 							<div class="movie">
-								<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/{{$a->id}}">
-									<img src="images/{{$a->poster}}" class="img-fluid">
+								<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>">
+									<img src="images/<?php echo $a->poster ?>" class="img-fluid">
 
 									<div class="nenLayout">
 										<img src="images/play-icon.png" class="img-fluid">
 									</div>
 								</a>
-								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/{{$a->id}}">{{$a->tenPhim}}</a></h3>
-								<h4><a>{{$a->thoiLuong}} phút</a> </h4>
+								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>"><?php echo $a->tenPhim ?></a></h3>
+								<h4><a><?php echo $a->thoiLuong ?> phút</a> </h4>
 							</div>
 						</div>
-						@endforeach
+						<?php } ?>
 
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<div class="nenLayout">
-									<img src="images/play-icon.png" class="img-fluid">
-								</div>
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+			
 					</div>
 				</div>
 			</div>
 			<div class="cateMove">
 				<div class="container">
 					<div class="row">
+					<?php foreach($phim as $a){ ?>
 						<div class="col-sm-4 col-md-2">
 							<div class="movie">
-								<img src="images/cover2.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+								<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>">
+									<img src="images/<?php echo $a->poster ?>" class="img-fluid">
 
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
+									<div class="nenLayout">
+										<img src="images/play-icon.png" class="img-fluid">
+									</div>
+								</a>
+								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>"><?php echo $a->tenPhim ?></a></h3>
+								<h4><a><?php echo $a->thoiLuong ?> phút</a> </h4>
 							</div>
 						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+						<?php } ?>
 
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+						
+						
 					</div>
 				</div>
 			</div>
 			<div class="cateMove">
 				<div class="container">
 					<div class="row">
+							<?php foreach($phimsc as $a){ ?>
 						<div class="col-sm-4 col-md-2">
 							<div class="movie">
-								<img src="images/cover3.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+								<a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>">
+									<img src="images/<?php echo $a->poster ?>" class="img-fluid">
 
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
+									<div class="nenLayout">
+										<img src="images/play-icon.png" class="img-fluid">
+									</div>
+								</a>
+								<h3><a href="http://localhost:8080/He-thong-ban-ve-xem-phim-online/public/chitietphim/<?php echo $a->id ?>"><?php echo $a->tenPhim ?></a></h3>
+								<h4><a><?php echo $a->thoiLuong ?> phút</a> </h4>
 							</div>
 						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+						<?php } ?>
 
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
-						<div class="col-sm-4 col-md-2">
-							<div class="movie">
-								<img src="images/cover.jpg" class="img-fluid">
-								<h3><a href="">Ten phim</a></h3>
-								<h4><a href="">the loai</a></h4>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</div>
