@@ -7,6 +7,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<title>Amin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/themify-icons.css">
@@ -28,6 +29,9 @@
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/responsive.css">
 	<!-- modernizr css -->
 	<script src="<?php echo asset('') ?>js/modernizr-2.8.3.min.js"></script>
+
+
+
 
 </head>
 <body >
@@ -136,7 +140,7 @@
 						</div>
 						<!-- page title area end -->
 						<div class="main-content-inner" >
-							<div ng-view ></div>			
+							<ng-view></ng-view>			
 						</div>
 						<!-- main content area end -->
 					</div>
@@ -159,7 +163,7 @@
 
 
 				<!-- Start datatable js -->
-				<script src="<?php echo asset('') ?>js/dataTables.select.min.js"></script>
+				<!--<script src="<?php echo asset('') ?>js/dataTables.select.min.js"></script>-->
 				<!-- Required datatable js -->
 				<script src="<?php echo asset('') ?>js/jquery.dataTables.min.js"></script>
 				<script src="<?php echo asset('') ?>js/dataTables.bootstrap4.min.js"></script>
@@ -184,6 +188,7 @@
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-messages.min.js"></script>
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-material.min.js"></script>  
 				<script type="text/javascript" src="<?php echo asset('') ?>js/angular-route.min.js"></script>  
+
 				<script type="text/javascript" src="<?php echo asset('') ?>js/functionAngular.js"></script>  
 				<!-- end angularjs </!-->
 				<!-- others plugins -->

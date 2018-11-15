@@ -25,24 +25,14 @@ class PageController extends Controller
 
 		$this->validate($request,
 			[
-				'username'=>'required|min:3|max:20|unique:taiKhoanKH:tenTKKH',
+				'username'=>'required|min:3|max:20',
 				'pass'=>'required|min:3|max:50',
-				'pass1'=>'required|same:pass',
-				'ten'=>'required',
-				'sdt'=>'required',
-				'email'=>'required|email'
+				'pass1'=>'required|same:pass'
 
 			],[
-				'username.required'=>'Nhập đủ thông tin',
 				'username.min'=>'Nhap kho duoc it hon 3 ky tu',
 				'username.max'=>'Nhap khong qua 20 ky tu',
-				'pass.required'=>'Nhập đủ thông tin',
-				'email.required'=>'Nhập đủ thông tin',
-				'email.email'=>'Chua sai email',
-				'pass1.same'=>'Mat khau khong giong nhau',
-				'ten.required'=>'Nhập đủ thông tin',
-				'sdt.required'=>'Nhập đủ thông tin',
-				'username.unique'=>'Tai khoan da ton tai'
+				'pass1.same'=>'Mat khau khong giong nhau'
 			]);
 
 

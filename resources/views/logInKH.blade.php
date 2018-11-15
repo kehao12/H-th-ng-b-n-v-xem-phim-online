@@ -24,10 +24,10 @@
 							<img src="images/logo12.png" class="img-hinh" alt="">
 						</div>
 						<div class="col-md-12 theInput">
-							<input type="text" placeholder="Tên đăng nhập" name="userName"></input>
+							<input type="text" placeholder="Tên đăng nhập" name="userName" required=""></input>
 						</div>
 						<div class="col-md-12 theInput">
-							<input placeholder="Mật khẩu" type="Password" name="pass">
+							<input placeholder="Mật khẩu" type="Password" name="pass" required="">
 						</div>
 						<div class="col-md-12 nutSubmit">
 							<input type="submit" value="Đăng nhập"></div>	

@@ -1,15 +1,15 @@
- var app = angular.module('myApp',['ngRoute','ngMaterial']).constant('API', 'http://localhost:8080/He-thong-ban-ve-xem-phim-online/public')
+ var app = angular.module('myApp',['ngRoute','ngMaterial']).constant('API', 'http://localhost:8080/He-thong-ban-ve-xem-phim-online/public');
  app.controller('MyController',  function($scope){
 
  })
 
  app.config(function ($routeProvider,$locationProvider) {
  	var urlLocal="http://localhost:8080/He-thong-ban-ve-xem-phim-online/resources/views/";
- 	$routeProvider.
- 	when('/',{
+ 	$routeProvider
+ 	.when('/',{
  		templateUrl:urlLocal+'admin/adIndex.php',
- 	}).
- 	when('/nvAdd',{
+ 	})
+ 	.when('/nvAdd',{
  		templateUrl:urlLocal+'admin/nhanVien/nhanVien_add.html',
  		controller:'themNhanVien'
  	})
