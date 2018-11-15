@@ -73,3 +73,5 @@ Route::get('trangchu',['as'=>'trangchu','uses'=>'PageController@getTrangChu']);
 Route::get('thongtinkh/{id}',['as'=>'thongtinkh','uses'=>'PageController@getThongTinKH']);
 Route::get('thaythongtin/{id}',['as'=>'thaythongtin','uses'=>'PageController@getThayThongTin']);
 Route::post('thaythongtin/{id}',['as'=>'thongtinkh','uses'=>'PageController@postThongTinKH']);
+
+Route::get('header',['as' => 'header' , 'uses' => 'PageController@getheader']);
