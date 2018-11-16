@@ -6,7 +6,7 @@
                 <form  method="post" name="f1" novalidate>
                     <div class="form-group">
                         <label for="exampleInput">Tên Thể Loại</label>
-                        <input type="text" class="form-control" placeholder="Enter name" name="nameNV" ng-model="tenTL" minlength="3" maxlength="20" required>                  
+                        <input type="text" class="form-control" placeholder="Enter name" name="nameNV" ng-model="tenTL" minlength="3" maxlength="20" required ng-required="true">                  
                     </div>    
                     <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addTL()">Lưu</button>
                 </form>

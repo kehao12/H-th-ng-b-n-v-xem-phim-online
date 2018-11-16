@@ -2834,4 +2834,5 @@ table.dataTable thead td {
 .fmEditMovie{    background: rgb(247, 241, 241);}
 .infoMV p{ padding-left: 5%;    padding-top: 1%; }
 .infoMV img{     padding-bottom: 10px; }
+span.error{text-align: center;display: block;color: red;margin-left: 17%;}
 /*-------------------- END Offset Sidebar ------------------- */

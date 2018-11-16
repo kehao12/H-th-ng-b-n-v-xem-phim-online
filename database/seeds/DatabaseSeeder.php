@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-       $this->call(khachhang::class);
+       $this->call(MySeed::class);
     }
 }
 /**
@@ -24,7 +24,7 @@ class MySeed extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            ['tenTK'=>'Admin12','matKhau'=>bcrypt('admin')]
+            ['tenTK'=>'Admin3','password'=>bcrypt('ad3')]
         /*  ['tenTK'=>'Admin1','matKhau'=>bcrypt('ad')],
             ['tenTK'=>'Admin2','matKhau'=>bcrypt('ad')]*/
         ]);
@@ -65,7 +65,19 @@ class khachhang extends Seeder
     public function run()
     {
         DB::table('khachhang')->insert([
-            ['tenKH'=>str_random(10),'diachi'=>str_random(10),'soDienThoai'=>'09090909','email'=>'abcdef@gmail.com','tenTaiKhoan'=>'user']
+            ['tenKH'=>'khachhang1','diachi'=>str_random(10),'soDienThoai'=>'09090909','email'=>'abcdef@gmail.com','tenTaiKhoan'=>'kh1']
+        ]);
+    }
+}
+class taiKhoanKH extends Seeder
+{
+    
+    public function run()
+    {
+        DB::table('taikhoankh')->insert([
+            ['tenTKKH'=>'kh1','matKhaukh'=>bcrypt('kh')]
+        /*  ['tenTK'=>'Admin1','matKhau'=>bcrypt('ad')],
+            ['tenTK'=>'Admin2','matKhau'=>bcrypt('ad')]*/
         ]);
     }
 }

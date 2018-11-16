@@ -56,6 +56,14 @@
  	.when('/suatChieu', {
  		templateUrl:urlLocal+ 'admin/suatChieu/suatChieu.html',
  		controller: 'scController'
+ 	})
+ 	.when('/addVe', {
+ 		templateUrl:urlLocal+ 'admin/ve/addVe.html',
+ 		controller: 'veCtrl'
+ 	})
+ 	.when('/editVe', {
+ 		templateUrl:urlLocal+ 'admin/ve/editVe.html',
+ 		controller: 'veCtrl'
  	})	
  	.otherwise({ redirectTo: '/' })
  });
@@ -575,9 +583,9 @@ $scope.addPhim=function(){
 
 
 	$scope.dataP.dateString = moment($scope.dataP.date).format("YYYY-MM-DD");
-
-	console.log($scope.dataP.dateString);
-	if($scope.timeMovie  > 10){
+	var dateNow=new Date();
+	var dateCrr=moment($scope.dateNow).format("YYYY-MM-DD");
+	if($scope.timeMovie  > 10 && ($scope.dataP.date > dateNow ) ){
 		var data =$.param({
 			namePhim:$scope.namePhim,
 			idTL:$scope.idTL,
@@ -924,6 +932,8 @@ $scope.showMessg = function(thongbao) {
     		$scope.ngayC.dateString = moment($scope.ngayC.date).format("YYYY-MM-DD");
     		$scope.myDate=new Date();
     		var dateCrr=moment($scope.myDate).format("YYYY-MM-DD");
+    		console.log($scope.ngayC.date);
+    		console.log($scope.myDate);
     		if($scope.ngayC.date >= $scope.myDate){
     			var data =$.param({
     				idPC:$scope.idPC,
@@ -1262,3 +1272,122 @@ $scope.showMessg = function(thongbao) {
 
     });
  /* END QL SUAT CHIEU*/
+ /* QL VE*/
+ app.controller('veCtrl', function($scope,$http,API,$mdToast){
+
+ 	$scope.getSC=function(){
+ 		var myDate=new Date();
+ 		$scope.ngayC.dateString = moment($scope.ngayC.date).format("YYYY-MM-DD");
+ 		var myDateStr = moment(myDate).format("YYYY-MM-DD");
+ 		var tempMD = new Date(myDateStr);
+ 		var  tempPick=new Date($scope.ngayC.dateString);
+ 		if(tempPick >= tempMD){
+ 			var data =$.param({ ngayC:$scope.ngayC.dateString});
+ 			var config={
+ 				headers:{
+ 					'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+ 				}
+ 			}
+ 			$http.post(API+'getCTSC', data,config).success(function(response){
+ 				$scope.schieu=response;
+ 				console.log(response);
+ 			});
+ 		}
+ 		else{
+ 			$scope.showMessg("Ngày chọn quá thời hạn !")
+ 		}
+ 		
+ 	};
+ 	$scope.getPC=function(){
+ 		var data =$.param({
+ 			ngayC:$scope.ngayC.dateString,
+ 			idSC:$scope.idSuatChieu
+ 		});
+ 		var config={
+ 			headers:{
+ 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+ 			}
+ 		}
+ 		$http.post(API+'getFrPC', data,config).success(function(response){
+ 			$scope.slPC=response;
+ 			console.log($scope.slPC);
+ 			$scope.slSum=$scope.slPC[0].slA+$scope.slPC[0].slB+$scope.slPC[0].slC+$scope.slPC[0].slD+$scope.slPC[0].slE;
+ 		});
+ 	};
+ 	$http.get(API+'getVe').success(function(response){
+ 		$scope.ve=response;
+ 	});
+ 	$scope.addVe=function(){
+ 		$scope.ngayC.dateString = moment($scope.ngayC.date).format("YYYY-MM-DD");
+ 		var data=$.param({
+ 			idSC:$scope.idSuatChieu,
+ 			ngayChieu:$scope.ngayC.dateString,
+ 			slVe:$scope.slVe,
+ 			giaVe:$scope.giaVe
+ 		});
+ 		var config={
+ 			headers:{
+ 				'content-type':'application/x-www-form-urlencoded;charset=UTF-8'
+ 			}
+ 		}
+ 		$http.post(API+'addVe', data, config).then(function(res){
+ 			if(res.data ==1){
+ 				$scope.showMessg('Thêm thành công');
+ 			}
+ 		}, function(er){
+ 			$scope.showMessg('Thêm thất bại');
+ 		})
+ 	};
+ 	$scope.showEdit=function(sc){
+ 		sc.hienThi=!sc.hienThi;
+
+ 	}	
+ 	$scope.show=function(sc){
+ 		sc.hienThi=!sc.hienThi;
+ 		$http.get(API+'getListSC').success(function(response){
+ 			$scope.sc=response;
+ 		});
+
+ 	}	
+
+ 	var last = {
+ 		bottom: true,
+ 		top: false,
+ 		left: false,
+ 		right: true
+ 	};
+
+ 	$scope.toastPosition = angular.extend({},last);
+
+ 	$scope.getToastPosition = function() {
+ 		sanitizePosition();
+
+ 		return Object.keys($scope.toastPosition)
+ 		.filter(function(pos) { return $scope.toastPosition[pos]; })
+ 		.join(' ');
+ 	};
+
+ 	function sanitizePosition() {
+ 		var current = $scope.toastPosition;
+
+ 		if ( current.bottom && last.top ) current.top = false;
+ 		if ( current.top && last.bottom ) current.bottom = false;
+ 		if ( current.right && last.left ) current.left = false;
+ 		if ( current.left && last.right ) current.right = false;
+
+ 		last = angular.extend({},current);
+ 	}
+
+ 	$scope.showMessg = function(thongbao) {
+ 		var pinTo = $scope.getToastPosition();
+
+ 		$mdToast.show(
+ 			$mdToast.simple()
+ 			.textContent(thongbao)
+ 			.position(pinTo )
+ 			.hideDelay(3000)
+ 			);
+ 	};
+
+ });
+ /* END QL VE*/

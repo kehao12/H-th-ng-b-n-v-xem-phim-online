@@ -13,13 +13,13 @@ $(function(){
 		/* banner */
 		if(count!=3){
 			count++;
-			urlImg="url(resources/images/home_bg"+count+".jpg) center center / cover no-repeat";
+			urlImg="url(images/home_bg"+count+".jpg) center center / cover no-repeat";
 			$('#banner').css('background',urlImg);
 			console.log(count);
 		}
 		else if(count == 3){
 			count=0;
-			urlImg="url(resources/images/home_bg.jpg) center center / cover no-repeat";
+			urlImg="url(images/home_bg.jpg) center center / cover no-repeat";
 			$('#banner').css('background',urlImg);
 			console.log(count);
 		}
@@ -143,10 +143,10 @@ $(function(){
 	});
 
 
-	$('.tenRap ul li').click(function(){
-		$('.tenRap ul li').css('color','#928e8e');
-		$(this).css('color','#fff');
-
+	$('.tenRap ul li h3.the').click(function(){
+		/*$('.tenRap ul li h3').css('color','#928e8e');
+		$(this).css('color','#fff');*/
+		console.log("43sd");
 	});
 	/* end lich chieu*/
 	/* scroll */

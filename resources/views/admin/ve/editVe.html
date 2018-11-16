@@ -1,0 +1,67 @@
+<div class="col-12 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="header-title text-center">LIST VÉ</h4>
+      <div class="single-table">
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead class="text-uppercase bg-primary">
+              <tr class="text-white">
+                <th scope="col">Id</th>
+                <th scope="col">Ngày chiếu</th>
+                <th scope="col">idSC</th>
+                <th scope="col">Số lượng vé</th>             
+                <th scope="col">Giá Vé</th>
+                <th scope="col">Hành động</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="ele in ve" ng-init="ele.hienThi=true">
+              <tr ng-show="ele.hienThi">
+                <th scope="row">{{ele.id}}</th>
+                <th scope="row">{{ele.ngayChieu}}</th>
+                <th scope="row">{{ele.idSC}}</th>
+                <th scope="row">{{ele.soLuongVe}}</th>
+                <th scope="row">{{ele.giaVe}}</th>         
+                <td>
+                  <i class="fa fa-pencil" ng-click="showEdit(ele)" style="padding-right: 13px; cursor: pointer;"></i>
+                  <i class="ti-trash" ng-click="deleteLC(ele.id)"></i>
+                </td>
+                <!-- edit data nhan vien</!-->
+                <tr ng-show="!ele.hienThi" >
+                  <th scope="row">{{ele.id}}</th>
+                  <td>
+                   <md-datepicker ng-model="ngayC.date"   md-placeholder="{{ele.ngayChieu}}" ng-change="getSC(ngayC.date)"></md-datepicker>
+                 </td>
+                 <td>
+                  <select  class="form-control" name="idSC" ng-model="ele.idSC" ng-change="getPC()" ng-required=true>
+                   <option ng-repeat="sc in schieu" value="{{sc.idSC}}">{{sc.gioChieu | date: "HH:mm:ss"}}</option>
+                 </select>
+                 <span class="error" ng-show="idSC.$error.required">Không được để trống</span>
+               </td>
+               <td>
+                 <input type="number" name="slVe" class="form-control" ng-min="1"  ng-max="{{slSum}}" min="1" max="{{slSum}}" ng-model="ele.slVe" ng-required=true>
+                 <span class="error" ng-show="slVe.$error.required">Không được để trống</span>
+                 <span class="error" ng-show="slVe.$error.max">Quá số lượng cho phép ({{slSum}})</span>
+                 <span class="error" ng-show="slVe.$error.min">Số lượng không hợp lệ</span>
+                 <span class="error" ng-show="slVe.$error.number"> Không hợp lệ</span>
+               </td>
+               <td>
+                <input type="number" name="giaVe" step="any" class="form-control" ng-min="20000"  ng-max="" min="20000" max="" ng-model="giaVe" ng-required=true>
+                 <span class="error" ng-show="f1.giaVe.$error.required">Không được để trống</span>
+                 <span class="error" ng-show="f1.giaVe.$error.max">Quá số lượng cho phép</span>
+                 <span class="error" ng-show="f1.giaVe.$error.min">Số lượng không hợp lệ</span>
+                 <span class="error" ng-show="f1.giaVe.$error.number"> Không hợp lệ</span>
+               </td>
+               <td>
+                <i class="fa fa-check" ng-click=" editLC(ele)" style="padding-right: 13px; cursor: pointer;"></i>  
+                <i class="fa fa-close" ng-click="show(ele)" style="cursor: pointer;"></i>                               
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+
+      </div>
+      

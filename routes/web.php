@@ -14,13 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('admin', function() {
-    return view('logInAdmin');
-});
-Route::post('logInAD',['as' =>'logInAD','uses'=>'MyController@login_Ad']);
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*Route::get('/home', 'indexController@loadHome')->name('home');*/
 Route::get('lienket', function() {
     $data=App\nhanVien::find(2)->taiKhoan->toArray();
     echo "<pre>";
@@ -41,8 +38,24 @@ Route::get('phongchieu',function()
     echo "</pre>";
 });
 /* ADMIN  */
-/* QL NHAN VIEN  */
+Route::post('logInAD',['as' =>'logInAD','uses'=>'MyController@login_Ad']);
+Auth::routes();
+Route::get('admin', function() {
+    if(Session::has('admin') && Session::get('loginAD')==true){
+        return view('admin/adIndex');
+    }
+    else
+        return view('logInAdmin');
+})->name('admin');
+Route::get('logOutAd', function() {
+     Request::session()->forget('loginAD');
+     Request::session()->forget('admin');
+     Request::session()->forget('quyen');
+     Request::session()->forget('toastAD');
+    return redirect()->route('admin');
+});
 Route::post('addNhanVien',['as'=>'addNhanVien','uses'=>'MyController@themNHANVIEN']);
+/* QL NHAN VIEN  */
 Route::get('listNV','MyController@getList' );
 Route::get('deleteNV/{id}','MyController@deleteNhanVien');
 Route::post('editNV/{id}','MyController@editNV');
@@ -77,12 +90,6 @@ Route::post('addPC','MyController@addPC');
 Route::post('editPC/{id}','MyController@editPC');
 Route::post('deletePC/{id}','MyController@deletePC');
 /* END QL PHONG CHIEU*/
-/*Dang Nhap KH*/
-Route::get('user',function(){
-    return view('logInKH');
-});
-Route::post('logInKH',['as' =>'logInKH','uses'=>'MyController@login_KH']);
-/*END DN KH*/
 /* QL LICH CHIEU*/
 Route::post('listPCbyID/{id}','MyController@getListPCbyID');
 Route::post('listPhimById/{id}','MyController@getListPhimById');
@@ -97,3 +104,29 @@ Route::get('getListSC','MyController@getListSC');
 Route::post('editsc/{id}','MyController@editSC');
 Route::post('deletesc/{id}','MyController@deleteSC');
 /* END QL SUAT CHIEU*/
+/* QL VE*/
+Route::post('getCTSC','MyController@getCTSC');
+Route::post('getFrPC','MyController@geFrPC');
+Route::post('addVe','MyController@addVe');
+Route::get('getVe','MyController@getVe');
+/* END QL VE*/
+/* TRANG CHU*/
+Route::get('home','indexController@loadHome')->name('home');
+Route::post('getLicHchieu','indexController@getLicHchieu');
+Route::post('getSoPhong/{id}','indexController@getSoPhong');
+Route::post('getVe','indexController@getVeForHome');
+Route::post('bookingVe', 'indexController@bookingVe');
+Route::post('getDataBk','indexController@getDataBk');
+/*END TRANG CHU*/
+/* LOGIN KH*/
+Route::get('logInKh', function() {
+     return view('logInKH');
+})->name('dangnhap');
+Route::post('logInKH',['as' =>'logInKH','uses'=>'indexController@login_KH']);
+Route::get('logOut', function() {
+    Request::session()->forget('login');
+    Request::session()->forget('khachhang');
+    Request::session()->forget('khachhang');
+    return redirect()->route('home');
+});
+/* END LOGIN KH*/

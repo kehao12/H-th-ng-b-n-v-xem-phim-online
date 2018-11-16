@@ -18,7 +18,8 @@ use App\theLoai;
 use App\phim;
 use App\suatChieu;
 use App\lichChieu;
-use App\phansuatchieu;
+use App\chiTietSC;
+use App\ve;
 use DB;
 class MyController extends Controller
 {
@@ -35,41 +36,24 @@ class MyController extends Controller
     		'tenTK.max'=>'Nhap khong qua 20 ky tu',
     		'password.require'=>'Chua nhap pass'
     	]);
+      if($tenTK == null || $matkhau == null){
+        return redirect('admin');
+      }
     	$a= array('tenTK'=>$tenTK,'password'=>$matkhau);
     	if(Auth::attempt($a)){
             $tenUser =Auth::user();
-            return view('admin.adIndex',['tenUser'=>$tenUser]);
+            $tk=new taiKhoanAD;
+            $quyen=$tk->where('tenTK',$tenTK)->select('quyen')->get()->toArray();
+            $rq->session()->put('loginAD',true);
+            $rq->session()->put('admin',$tenTK);
+            $rq->session()->put('quyen',$quyen[0]['quyen']);
+            $rq->session()->put('toastAD',true);
+            return redirect()->route('admin');
         }
         else
-           return view('logInAdmin')->with('thongbao','thatbai');
+           return redirect('logInAdmin')->with('thongbao','thatbai');
    }
-    public function login_KH(Request $rq)
-    {
-      $tenTKKH=$rq->userName;
-      $matKhauKH=$rq->pass;
-      $this->validate($rq,[
-        'tenTK'=>'require|min:3|max:20',
-        'password'=>'require|min:3|max:50'
-      ],[
-        'tenTK.require'=>'Chua nhap tai khoan',
-        'tenTK.min'=>'Nhap kho duoc it hon 3 ky tu',
-        'tenTK.max'=>'Nhap khong qua 20 ky tu',
-        'password.require'=>'Chua nhap pass'
-      ]);
-      $pass=taiKhoanKH::where('tenTKKH',$tenTKKH)->select('matKhauKh')->get()->toArray();
-      if($pass[0]['matKhauKh']==$matKhauKH){
-        echo "1";
-      }
-      else
-      {
-        echo $matKhauKH;
-        echo "<pre>";
-        var_dump($pass);
-        echo "</pre>";
-        echo $pass[0]['matKhauKh'];
-       echo "0";
-     }
-   }
+   
    public function themNHANVIEN(Request $rq)
    {
        $ten=$rq->ten;
@@ -287,10 +271,11 @@ public function upLoadImg(Request $rq)
     }
     public function addLC(Request $rq)
     {
-      $psc=new phansuatchieu;
+      $psc=new chiTietSC;
       $lc = new lichChieu;
       $psc->idPC=$rq->idPC;
       $psc->idSC=$rq->idSC;
+      $psc->ngayCHieu=$rq->ngayC;
       $psc->save();
       $lc->idPhim=$rq->idPhim;
       $lc->idSC=$rq->idSC;
@@ -341,4 +326,49 @@ public function upLoadImg(Request $rq)
       return 1;
     }
     /* END QL SUAT CHIEU*/
+    /* QL VE*/
+    public function getCTSC(Request $rq)
+    {
+      $ctsc = new chiTietSC;
+      $getCTSC = $ctsc->where('ngayCHieu',$rq->ngayC)->select('idSC','idPC');
+      $sc=new suatChieu;
+      $getTime=$sc->joinSub($getCTSC,'getCTSC',function($joim){
+        $joim->on('suatchieu.id','getCTSC.idSC');
+      })->select('suatchieu.gioChieu','getCTSC.*')->get()->toJson();
+     /* $pc= new phongChieu;
+      $data= $pc->joinSub($getTime,'getTime',function($join){
+        $join->on('phongchieu.id','getTime.idPC');
+      })->select('phongchieu.*','getTime.*')->get()->toJson();*/
+      return $getTime;
+    }
+    public function geFrPC(Request $rq)
+    {
+      $ctsc=new chiTietSC;
+      $getIdPC=$ctsc->where([
+        ['ngayCHieu',$rq->ngayC],['idSC',$rq->idSC]
+      ])->select('idPC');
+      $pc = new phongChieu;
+      $data= $pc->joinSub($getIdPC,'getIdPC',function($join){
+        $join->on('phongchieu.id','getIdPC.idPC');
+      })->select('phongchieu.*','getIdPC.*')->get()->toJson();
+      return $data;
+    }
+    public function addVe(Request $rq)
+    {
+      $ve=new ve;
+      $ve->idSC=$rq->idSC;
+      $ve->ngayChieu=$rq->ngayChieu;
+      $ve->soLuongVe=$rq->slVe;
+      $ve->giaVe=$rq->giaVe;
+      $ve->save();
+      return 1;
+
+    }
+    public function getVe()
+    {
+      $ve = new ve;
+      $data=$ve->select('*')->get()->toJson();
+      return $data;
+    }
+    /* END QL VE*/
 }

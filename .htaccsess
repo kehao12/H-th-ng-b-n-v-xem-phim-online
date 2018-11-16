@@ -1,14 +1,12 @@
-<system.webServer>
-    <rewrite>
-     <rules> 
-      <rule name="Main Rule" stopProcessing="true">
-        <match url=".*" />
-        <conditions logicalGrouping="MatchAll">
-          <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />                                 
-          <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
-        </conditions>
-        <action type="Rewrite" url="http://localhost:8080/PROJECT/testLRV/public/logInAD/nvAdd" />
-      </rule>
-    </rules>
-    </rewrite>
-</system.webServer>
+RewriteEngine On
+# If an existing asset or directory is requested go to it as it is
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+# If the requested pattern is file and file doesn't exist, send 404
+RewriteCond %{REQUEST_URI} ^(\/[a-z_\-\s0-9\.]+)+\.[a-zA-Z]{2,4}$
+RewriteRule ^ - [L,R=404]
+
+# otherwise use history router
+RewriteRule ^ http://localhost:8080/PROJECT/Cinema/public/home/
