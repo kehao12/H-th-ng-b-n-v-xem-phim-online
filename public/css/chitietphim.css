@@ -164,14 +164,17 @@
 		margin-top: 50px;
 		box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.298039215686275);
 	}
-	.date_list{
+	.date_list {
 		color: white;
 		float: left;
 		margin: 0 auto;
 		margin-left: 50px;
-		margin-top:10px;
+		margin-top: 10px;
 		text-align: center;
 		cursor: pointer;
+		border: none;
+		background: transparent;
+		font-size: 25px;
 	}
 	.date_list .day{
 		font-size: 14px;
@@ -293,28 +296,28 @@
 		font-weight: 700;
 	}
 	.nutthaytt {
-    border: solid 1px #E71A0F;
-    margin: 10px;
-    width: 180px;
-    height: 30px;
-    text-align: center;
-    background: #E71A0F;
-    margin: 0 auto;
-    margin-top: 40px;
+		border: solid 1px #E71A0F;
+		margin: 10px;
+		width: 180px;
+		height: 30px;
+		text-align: center;
+		background: #E71A0F;
+		margin: 0 auto;
+		margin-top: 40px;
 
-}
-.nutthaytt a{
-	 color: white;
-}
-.nutthaytt a:hover{
-	text-decoration: none;
-	color: white;
-}
-.nut{
-	    width: 200px;
-    margin-top: 35px;
-    background: #e71a0f;
-    border: #e71a0f;
-    color: white;
-    height: 30px;
-}
+	}
+	.nutthaytt a{
+		color: white;
+	}
+	.nutthaytt a:hover{
+		text-decoration: none;
+		color: white;
+	}
+	.nut{
+		width: 200px;
+		margin-top: 35px;
+		background: #e71a0f;
+		border: #e71a0f;
+		color: white;
+		height: 30px;
+	}

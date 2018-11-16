@@ -13,4 +13,8 @@ class phim extends Model
     {
     	return $this->belongsTo('App\theLoai','idTL');
     }
+     public function lichchieu()
+    {
+    	return $this->hasMany('App\lichchieu','idPhim');
+    }
 }

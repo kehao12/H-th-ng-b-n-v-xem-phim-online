@@ -11,6 +11,9 @@ use App\taiKhoanKH;
 use App\theLoai;
 use App\phim;
 use App\khachhang;
+use App\lichchieu;
+use App\suatchieu;
+use App\phansuatchieu;
 use DB;
 
 class PageController extends Controller
@@ -56,10 +59,23 @@ class PageController extends Controller
 		{
 			$phim=phim::where('id',$rq->id)->first();
 			$theloai=theLoai::where('id',$phim->idTL)->select('tenTL')->first();
+			$lichchieuphim=lichchieu::where('idPhim',$rq->id)->get();
+			$lichchieuphim1=lichchieu::where('idPhim',$rq->id)->select('ngayChieu')->distinct()->orderby('ngayChieu','asc')->get();
+			$suatchieu=suatchieu::select()->get();
+			$phansuatchieu=phansuatchieu::select()->get();
+			$phongchieu=phongchieu::select()->get();
+			
+			$rap=rapPhim::select()->get();
+
+
+			
 
 
 
-			return view('pages.chitietphim',compact('phim','rap','theloai'));
+
+
+
+			return view('pages.chitietphim',compact('phim','rap','theloai','lichchieuphim','suatchieu','phansuatchieu','phongchieu','lichchieuphim1'));
 		}
 
 		public function getTrangChu()	

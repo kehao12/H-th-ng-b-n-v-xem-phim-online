@@ -13,5 +13,9 @@ class phongChieu extends Model
     {
     	return $this->belongsTo('App\rapPhim','idRap','id');
     }
+    public function phansuatchieu()
+    {
+    	return $this->hasMany('App\phansuatchieu','idPC');
+    }
   
 }
