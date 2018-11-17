@@ -132,7 +132,6 @@ else
         $ord->idVe=$rq->idVe;
         $ord->idLich=$rq->idLich;
         $ord->soGhe=$rq->soGhe;
-        $ord->slGhe=$rq->slGhe;
         $ord->save();
         return 1;
     }

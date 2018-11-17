@@ -28,13 +28,13 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
  		}
  	};
  })*/
- app.controller('showInfoLich', function ($scope,$http,API) {
+ app.controller('showInfoLich', function ($scope,$http,API,$timeout) {
  	$http.get(API+'listRap').success(function(response){
  		$scope.rapPhim=response;
     		//console.log($scope.rapPhim);
     	});
  	var myDate=new Date();
- 	$
+
  	$scope.crDate=moment(myDate).format("YYYY-MM-DD");
  	$scope.getIdRap=function(rap,curre){
  		if(curre.length ==0){curre.push(rap.id);}
@@ -66,12 +66,15 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 
 		})
 	};
+	$scope.ktLoad=false;
 	$scope.showGhePC=function(val){
 		val.hien=!val.hien;
+		$scope.ktLoad=!$scope.ktLoad;
 		$scope.giC=val.gioChieu;
 		$scope.clShowPC=({clPC:"showNumberGhe", clBG:"backGrLichActive"});
 		$http.post(API+'getSoPhong/'+val.idPC)
 		.then(function(res){
+
 			$scope.soGhe=res.data;
 			console.log(res.data);
 			var sumSlGhe=$scope.soGhe[0].slA+$scope.soGhe[0].slB+$scope.soGhe[0].slC+$scope.soGhe[0].slD+$scope.soGhe[0].slE;
@@ -89,10 +92,10 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 			$http.post(API+'getVe',dataGetVe,config)
 			.then(function(re){
 				$scope.ve=re.data;
-				console.log($scope.ve.length);
-				console.log(re.data);
-				console.log(val.idPhim);
-				console.log(val.idSC);
+				$timeout(function() { 
+					$scope.ktLoad=!$scope.ktLoad;
+					$scope.lichC=!$scope.lichC;	
+				},1500);
 				if($scope.ve.length != 0){
 					var dataBk=$.param({
 						idPhim:val.idPhim, idSC:val.idSC
@@ -104,12 +107,39 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 						}
 					};
 					$http.post(API+'getDataBk',dataBk,config).then(function(re){
-						$scope.bk=re.data;
-						var indexSeat=JSON.parse($scope.bk[0].soGhe);
-						$scope.ghe=[];
-						for (var i = 0;i<indexSeat.length; i++) {
-							scope.ghe[i]=indexSeat[i];
+						var bk=re.data;
+						var gheBK=[];
+						for (var i = 0;i<bk.length; i++) {
+							var indexSeat=JSON.parse(bk[i].soGhe);
+							for(var x in indexSeat){
+								gheBK.push(indexSeat[x]);
+							}
+							
 						}
+						console.log(bk);
+						console.log(gheBK);
+						$scope.checkBk=function(sl,char){
+							var temp;
+							if(gheBK.length == 0){
+								temp=0;
+							}
+							else{
+								for(var i=0;i<gheBK.length;i++){
+									var tmp=""+char+sl+"";
+									if(gheBK[i].localeCompare(tmp) == 0){
+
+										temp= 1;
+										break;
+									}
+									else
+										temp= 0;
+								}
+							}
+							
+							return temp;
+
+						}
+
 					},function(er){
 						console.log(er.data);
 					});
@@ -139,7 +169,7 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 								$scope.soGhe[0].slD=0;
 								$scope.soGhe[0].slC=giaTdC;
 								$scope.slCpick=Math.abs(giaTdD);
-								
+
 							}
 							else{
 								var giaTdB=$scope.soGhe[0].slB-Math.abs(giaTdC);
@@ -176,22 +206,24 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 					$scope.slCpick=0;
 					$scope.slDpick=0;
 					$scope.slEpick=0;
-					
+					$scope.checkBk=function(sl,char){
+						return 0;
+					}
 
 				}
-				
+
 			},function(er){
 				console.log(er);
 			});
-			
+
 		},function(er){
 			console.log(er.data);
 		});
-		
-		
+
+
 
 	};
-	
+
 
 	$scope.vtSeat=function(value){
 		$scope.pick=value;
@@ -269,6 +301,22 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 	
 	console.log(pick);
 }
+$scope.checkIdPhim=function(val,checkIdMovie){
+	var kt;
+	if(checkIdMovie.length == 0){
+		checkIdMovie.push(val.idPhim);
+		kt=0;
+	}
+	else{
+		for(var i=0;i<checkIdMovie.lenght;i++){
+			if(checkIdMovie[i] == val.idPhim){
+				kt=1;
+				break;
+			}
+		}
+	}
+	return kt;
+}
 $scope.range = function(max){
 
 	var input = [];
@@ -282,9 +330,10 @@ $scope.range = function(max){
 	$scope.hideLichPC= function(val,money){
 		$scope.moNey=money;
 		val.hien =!val.hien;
+		$scope.lichC=!$scope.lichC;
 		$scope.clShowPC=({clPC:"hideNumberGhe", clBG:""});
 	};
-	$scope.oderTicket=function(pick,val){
+	$scope.bookTicket=function(pick,val){
 		var getTenKH=document.getElementById("giaTriKH").value;
 		
 		var ar ={};
@@ -296,8 +345,7 @@ $scope.range = function(max){
 			tenKH:getTenKH,
 			idLich:val.id,
 			idVe:$scope.ve[0].id,
-			soGhe:temp,
-			slGhe:2
+			soGhe:temp
 
 		});
 		console.log($scope.ve[0].id);
