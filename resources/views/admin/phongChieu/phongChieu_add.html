@@ -6,40 +6,63 @@
                 <form  method="post" name="f1" novalidate>
                     <div class="form-group">
                         <label for="exampleInput">Tên Phòng Chiếu</label>
-                        <input type="text" class="form-control" placeholder="Enter name"  ng-model="namePC" minlength="3" maxlength="20"         required>                  
+                        <input type="text" class="form-control" placeholder="Enter name"  ng-model="namePC" minlength="3" maxlength="20" name="namePC" ng-required=true>  
+                        <span class="error" ng-show="f1.namePC.$error.required">Không được để trống</span>
+                        <span class="error" ng-show="f1.namePC.$error.maxlength">Không được nhập quá 20 ký tự</span>
+                        <span class="error" ng-show="f1.namePC.$error.minlength">Không được nhập ít hơn 3 ký tự</span>                
                     </div>    
                     <div class="form-group">
                         <label >Rạp phim</label>
                         <select name=rapPhim  class="form-control" ng-model="idRap">
                            <option ng-repeat="value in rp" value="{{value.id}}">{{value.tenRap}}</option>
                        </select>
+                       <span class="error" ng-show="f1.rapPhim.$error.required">Không được để trống</span>
                    </div>
                    <div class="form-group">
                     <label >Số lượng ghế dãy A:</label>
-                    <select name=rapPhim  class="form-control" ng-model="slA" ng-options="item for item in soLuong">
+                    <select name=slgA  class="form-control" ng-model="slA" ng-options="item for item in soLuong" ng-required=true>
                     </select>
+                    <span class="error" ng-show="f1.slgA.$error.required">Không được để trống</span>
+                    <span class="error" ng-show="f1.slgA.$error.max">Quá số lượng cho phép</span>
+                    <span class="error" ng-show="f1.slgA.$error.min">Số lượng không hợp lệ</span>
+                    <span class="error" ng-show="f1.slgA.$error.number"> Không hợp lệ</span>
                 </div>
                 <div class="form-group">
                     <label >Số lượng ghế dãy B:</label>
-                    <select name=rapPhim  class="form-control" ng-model="slB" ng-options="item for item in soLuong">
+                    <select name=slgB  class="form-control" ng-model="slB" ng-options="item for item in soLuong" ng-required=true>
                     </select>
+                    <span class="error" ng-show="f1.slgB.$error.required">Không được để trống</span>
+                    <span class="error" ng-show="f1.slgB.$error.max">Quá số lượng cho phép</span>
+                    <span class="error" ng-show="f1.slgB.$error.min">Số lượng không hợp lệ</span>
+                    <span class="error" ng-show="f1.slgB.$error.number"> Không hợp lệ</span>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label >Số lượng ghế dãy C:</label>
-                    <select name=rapPhim  class="form-control" ng-model="slC" ng-options="item for item in soLuong">
+                    <select name=slgC  class="form-control" ng-model="slC" ng-options="item for item in soLuong" ng-required=true>
                     </select>
+                    <span class="error" ng-show="f1.slgC.$error.required">Không được để trống</span>
+                    <span class="error" ng-show="f1.slgC.$error.max">Quá số lượng cho phép</span>
+                    <span class="error" ng-show="f1.slgC.$error.min">Số lượng không hợp lệ</span>
+                    <span class="error" ng-show="f1.slgC.$error.number"> Không hợp lệ</span>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label >Số lượng ghế dãy D:</label>
-                    <select name=rapPhim  class="form-control" ng-model="slD" ng-options="item for item in soLuong">
+                    <select name=slgD  class="form-control" ng-model="slD" ng-options="item for item in soLuong" ng-required=true>
                     </select>
+                    <span class="error" ng-show="f1.slgD.$error.required">Không được để trống</span>
+                    <span class="error" ng-show="f1.slgD.$error.max">Quá số lượng cho phép</span>
+                    <span class="error" ng-show="f1.slgD.$error.min">Số lượng không hợp lệ</span>
+                    <span class="error" ng-show="f1.slgD.$error.number"> Không hợp lệ</span>
                 </div>
-                 <div class="form-group">
+                <div class="form-group">
                     <label >Số lượng ghế dãy E:</label>
-                    <select name=rapPhim  class="form-control" ng-model="slE" ng-options="item for item in soLuong">
+                    <select name=slgE  class="form-control" ng-model="slE" ng-options="item for item in soLuong" ng-required=true>
                     </select>
+                    <span class="error" ng-show="f1.slgE.$error.required">Không được để trống</span>
+                    <span class="error" ng-show="f1.slgE.$error.max">Quá số lượng cho phép</span>
+                    <span class="error" ng-show="f1.slgE.$error.min">Số lượng không hợp lệ</span>
+                    <span class="error" ng-show="f1.slgE.$error.number"> Không hợp lệ</span>
                 </div>
-                
                 <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addInfoPC()">Lưu</button>
             </form>
         </div>

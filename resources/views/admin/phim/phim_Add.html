@@ -6,36 +6,53 @@
         <form  method="post" name="f1" novalidate >
           <div class="form-group">
             <label for="exampleInput">Tên Phim</label>
-            <input type="text" class="form-control" placeholder="Enter name" ng-model="namePhim" minlength="3" maxlength="20" required>                  
+            <input type="text" class="form-control" placeholder="Enter name" ng-model="namePhim" minlength="3" maxlength="20" name="namePhim" ng-required=true> 
+            <span class="error" ng-show="f1.namePhim.$error.required">Không được để trống</span>
+            <span class="error" ng-show="f1.namePhim.$error.maxlength">Không được nhập quá 20 ký tự</span>
+            <span class="error" ng-show="f1.namePhim.$error.minlength">Không được nhập ít hơn 3 ký tự</span>
           </div>
           <div class="form-group">
             <label >Thể Loại</label>
-            <select name=gioiTinh  class="form-control" ng-model="idTL">
+            <select name="idTL"  class="form-control" ng-model="idTL" ng-required=true>
              <option ng-repeat="value in tL" value="{{value.id}}">{{value.tenTL}}</option>
            </select>
+           <span class="error" ng-show="f1.idTL.$error.required">Không được để trống</span>
          </div>
          <div class="form-group ">
           <label >Nội dung</label>
-          <textarea  type="text" class="form-control" cols="40" rows="5" ng-model="nd" minlength="3" maxlength="40" required></textarea>
+          <textarea  type="text" class="form-control" cols="40" rows="5" ng-model="nd" minlength="3" maxlength="255" name="noidung" ng-required=true></textarea>
+          <span class="error" ng-show="f1.noidung.$error.required">Không được để trống</span>
+          <span class="error" ng-show="f1.noidung.$error.maxlength">Không được nhập quá quá ngắn</span>
+          <span class="error" ng-show="f1.noidung.$error.minlength">Không được nhập quá dài</span>      
         </div>
         <div class="form-group ">
           <label >Ngày Khởi Chiếu</label>
-          <md-datepicker ng-model="dataP.date"  md-min-date="ngayC.minDate" md-placeholder="Enter date"></md-datepicker>
+          <md-datepicker ng-model="dataP.date" name="date"  md-min-date="ngayC.minDate" md-placeholder="Enter date" ng-required=true></md-datepicker>
+          <span class="error" ng-show="f1.date.$error.required">Không được để trống</span>
         </div>
         <div class="form-group">
           <label >Thời Lượng phim :</label>
-          <input type="number" class="form-control" ng-model="timeMovie" required min="50" max="250">
+          <input type="number" class="form-control" name="timePhim" ng-model="timeMovie" required min="50" max="250" ng-required=true>
+          <span class="error" ng-show="f1.timePhim.$error.required">Không được để trống</span>
+          <span class="error" ng-show="f1.timePhim.$error.max">Thời lượng không được quá dài</span>
+          <span class="error" ng-show="f1.timePhim.$error.min">Thời lượng không được quá ngắn</span>
+          <span class="error" ng-show="f1.tenPhim.$error.number">Trường cần nhập là số lượng</span>
         </div>
         <div class="form-group">
           <label >Trailer</label>
-          <input type="url" class="form-control" ng-model="trailer" minlength="3" maxlength="20" required>
+          <input type="url" class="form-control" name="trailer" ng-model="trailer" minlength="3" maxlength="20" ng-required=true>
+          <span class="error" ng-show="f1.trailer.$error.required">Không được để trống</span>
+          <span class="error" ng-show="f1.trailer.$error.url">Đây không phải là một URL</span>
+          <span class="error" ng-show="f1.trailer.$error.maxlength">Không được nhập quá 20 ký tự</span>
+          <span class="error" ng-show="f1.trailer.$error.minlength">Không được nhập ít hơn 3 ký tự</span> 
         </div>
         <div class="form-group" >
           <label >Ảnh Poster</label>
-           <div class="custom-file">
-          <input class="custom-file-input" id="customFile" type="file" name="file" class="form-control-file border" ng-model="fileName" onchange="angular.element(this).scope().uploadFile(this.files)" required>
-          <label class="custom-file-label" for="customFile" ng-model="fileName">{{fileName}}</label>
-        </div>
+          <div class="custom-file">
+            <input class="custom-file-input" id="customFile" type="file" name="file" class="form-control-file border" ng-model="fileName" onchange="angular.element(this).scope().uploadFile(this.files)" ng-required=true>
+            <label class="custom-file-label" for="customFile" ng-model="fileName">{{fileName}}</label>
+            <span class="error" ng-show="f1.file.$error.required">Không được để trống</span>
+          </div>
         </div>
         
         <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addPhim()">THÊM</button>

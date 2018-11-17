@@ -7,10 +7,12 @@
                     <div class="form-group row">
                         <label for="exampleInput" class="col-2 col-form-label">Thời gian suất chiếu</label>
                         <div class="col-10">
-                            <input  class="form-control"   type="time" ng-model="gioSC.time" min="8:00" max="24:00" placeholder="HH:mm" value={{ gioSC.date | date : 'HH:mm' }} required id="example-date-input">                  
+                            <input  class="form-control" type="time" ng-model="gioSC.time" min="8:00" max="24:00" placeholder="HH:mm" value={{ gioSC.date | date : 'HH:mm' }} ng-required=true id="example-date-input" name="timeSC">
+                            <span class="error" ng-show="frSC.timeSC.$error.required">Không được để trống</span>
+                            <span class="error" ng-show="frSC.timeSC.$error.time">Trường cần điền là thời gian</span>
+                            <span class="error" ng-show="frSC.timeSC.$error.min">Không được thêm trước 8:00 AM</span>
                         </div> 
                     </div>   
-                    
                    <button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addInfoSC()">THÊM</button>
                </form>
            </div>
