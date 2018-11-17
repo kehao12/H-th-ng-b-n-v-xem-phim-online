@@ -1,125 +1,166 @@
 <div class="lichMovies">
-	<ul>
-		<li ng-repeat="val in ifLC" ng-init="val.hien=true" ng-init="checkRp=[]" >
+	<ul ng-init="checkIdMovie=[]">
+		<span ng-repeat="val in ifLC" ng-init="val.hien=true">
+			<span ng-if="checkIdPhim(val,checkIdMovie) == 0">
+				<div class="infoLichMovie">
+					<img src="uploads/{{val.poster}}" class="img-fluid" style="height: 85px !important;float: left;" >
+					<h5>{{val.tenPhim}}<span>{{val.thoiLuong}}</span></h5>
+				</div>
+				<div class="dateTimeMovie">
+					<ul>
+						<span ng-repeat="ele in ifLC">
+							<span ng-if="ele.idPhim == val.idPhim && ele.gioChieu != val.gioChieu">
+								<li>
+									<a  ng-click="showGhePC(ele)">{{ele.gioChieu}}</a>	
+								</li>
+							</span>
+						</span>				
+					</ul>
+				</div>
+				<div class="backGrLich {{clShowPC.clBG}}"  ng-show="!val.hien" >
+					<div id="loaD" ng-show="ktLoad">
+						<img src="svg/load2.svg"  width="100px" height="40px">
+					</div>
+					<div class="numberGhe " ng-init="money=0"   ng-repeat="ghe in soGhe" ng-show="lichC">
+						<div id="nutCL" ng-click="hideLichPC(val,money)"><img src="images/closeIcon.png" class="img-fluid" width="32px" height="32px"></div>
 
-			<div class="infoLichMovie">
-				<img src="uploads/{{val.poster}}" class="img-fluid" style="height: 85px !important;float: left;" >
-				<h5>{{val.tenPhim}}<span>{{val.thoiLuong}}</span></h5>
-			</div>
-			<div class="dateTimeMovie">
-				<ul>
-					<li>
-						<a  ng-click="showGhePC(val)">{{val.gioChieu}}</a>
-					</li>
-					<span ng-repeat="ele in ifLC">
-						<span ng-if="ele.idPhim == val.idPhim && ele.gioChieu != val.gioChieu">
-							<li>
-								<a  ng-click="showGhePC(ele)">{{ele.gioChieu}}</a>	
-							</li>
-						</span>
+						<h3>Màn Hình</h3>
+						<div class="manHinh"></div>
+						<div class="row">
+							<div class="col-8">
+								<div class="listGhe" ng-init="pick=[]" >
+									<div class="dayA" >
+										<div class="container">
+											<h4>A</h4>
+											<div class="frameSeat">
 
-					</span>
-				</ul>
-			</div>
-			<div class="backGrLich {{clShowPC.clBG}}"  ng-show="!val.hien">
+												<div ng-repeat="sl in range(ghe.slA) "  >												
+													<div  ng-if="checkBk(sl,'A')==1">
+														<span class="seat" 	style="background: #35ce2b;"></span>
+													</div>
+													<div ng-if="checkBk(sl,'A')==0">
+														<span class="seat" 
+														ng-class="pick[0] =='A{{sl}}' || pick[1] == 'A{{sl}}'? 'pickSeat': ''"  id="A{{sl}}"  ng-click="pickSeat('A',sl,pick,money)">{{sl}}</span>
+													</div >
+												</div>			
+												<span  class="blockSeat" ng-repeat="slp in range(slApick)"></span>
+											</div>
 
-				<div class="numberGhe " ng-init="money=0"   ng-repeat="ghe in soGhe">
-					<div id="nutCL" ng-click="hideLichPC(val,money)"><img src="images/closeIcon.png" class="img-fluid" width="32px" height="32px"></div>
-					<h3>Màn Hình</h3>
-					<div class="manHinh"></div>
-					<div class="row">
-						<div class="col-8">
-							<div class="listGhe" ng-init="pick=[]" >
-								<div class="dayA" >
-									<div class="container">
-										<h4>A</h4>
-										<div class="frameSeat">
-											<span class="seat" ng-repeat="sl in range(ghe.slA) " 
-											ng-class="pick[0] =='A{{sl}}' || pick[1] == 'A{{sl}}'? 'pickSeat':''"  id="A{{sl}}"  ng-click="pickSeat('A',sl,pick,money)">{{sl}}</span>
-											<span  class="blockSeat" ng-repeat="slp in range(slApick)"></span>
-										</div>
+										</div>					
+									</div>	
+									<div class="dayB">
+										<div class="container">
+											<h4>B</h4>
+											<div class="frameSeat">
 
-									</div>					
-								</div>	
-								<div class="dayB">
-									<div class="container">
-										<h4>B</h4>
-										<div class="frameSeat">
-											<span class="seat" ng-repeat="sl in range(ghe.slB)"  id="B{{sl}}" ng-class="pick[0] =='B{{sl}}' || pick[1] == 'B{{sl}}'? 'pickSeat':''"  id="A{{sl}}" ng-click="pickSeat('B',sl,pick,money)">{{sl}}</span>
-											<span  class="blockSeat" ng-repeat="slp in range(slBpick)"></span>
-										</div>	
-									</div>				
-								</div>	
-								<div class="dayC">
-									<div class="container">
-										<h4>C</h4>
-										<div class="frameSeat">
-											<span class="seat" ng-repeat="sl in range(ghe.slC)" ng-class="pick[0] =='C{{sl}}' || pick[1] == 'C{{sl}}'? 'pickSeat':''"  id="A{{sl}}" id="C{{sl}}" ng-click="pickSeat('C',sl,pick)">{{sl}}</span>
-											<span  class="blockSeat" ng-repeat="slp in range(slCpick)"></span>
-										</div>	
-									</div>				
-								</div>	
-								<div class="dayD">
-									<div class="container">
-										<h4>D</h4>
-										<div class="frameSeat">
-											<span class="seat" ng-repeat="sl in range(ghe.slD)" ng-class="pick[0] =='D{{sl}}' || pick[1] == 'D{{sl}}'? 'pickSeat':''"  id="A{{sl}}" id="D{{sl}}" ng-click="pickSeat('D',sl,pick)">{{sl}}</span>
-											<span  class="blockSeat" ng-repeat="slp in range(slDpick)"></span>
-										</div>
-									</div>					
-								</div>	
-								<div class="dayE">
-									<div class="container">
-										<h4>E</h4>
-										<div class="frameSeat">
-											<span class="seat" ng-repeat="sl in range(ghe.slE)" ng-class="pick[0] =='E{{sl}}' || pick[1] == 'E{{sl}}'? 'pickSeat':''"  id="A{{sl}}" id="E{{sl}}"  ng-click="pickSeat('E',sl,pick)">{{sl}}</span>
-											<span  class="blockSeat" ng-repeat="slp in range(slEpick)"></span>
-										</div>	
-									</div>				
-								</div>	
+												<div ng-repeat="sl in range(ghe.slB) "  >												
+													<div  ng-if="checkBk(sl,'B')==1">
+														<span class="seat" 	style="background: #35ce2b;"></span>
+													</div>
+													<div ng-if="checkBk(sl,'B')==0">
+														<span class="seat" 
+														ng-class="pick[0] =='B{{sl}}' || pick[1] == 'B{{sl}}'? 'pickSeat': ''"    ng-click="pickSeat('B',sl,pick,money)">{{sl}}</span>
+													</div >
+												</div>			
+												<span  class="blockSeat" ng-repeat="slp in range(slBpick)"></span>
+											</div>
+										</div>				
+									</div>	
+									<div class="dayC">
+										<div class="container">
+											<h4>C</h4>
+											<div class="frameSeat">
+
+												<div ng-repeat="sl in range(ghe.slC) "  >												
+													<div  ng-if="checkBk(sl,'C')==1">
+														<span class="seat" 	style="background: #35ce2b;"></span>
+													</div>
+													<div ng-if="checkBk(sl,'C')==0">
+														<span class="seat" 
+														ng-class="pick[0] =='C{{sl}}' || pick[1] == 'C{{sl}}'? 'pickSeat': ''"    ng-click="pickSeat('C',sl,pick,money)">{{sl}}</span>
+													</div >
+												</div>			
+												<span  class="blockSeat" ng-repeat="slp in range(slCpick)"></span>
+											</div>
+										</div>				
+									</div>	
+									<div class="dayD">
+										<div class="container">
+											<h4>D</h4>
+											<div class="frameSeat">
+
+												<div ng-repeat="sl in range(ghe.slD) "  >												
+													<div  ng-if="checkBk(sl,'D')==1">
+														<span class="seat" 	style="background: #35ce2b;"></span>
+													</div>
+													<div ng-if="checkBk(sl,'D')==0">
+														<span class="seat" 
+														ng-class="pick[0] =='D{{sl}}' || pick[1] == 'D{{sl}}'? 'pickSeat': ''"   ng-click="pickSeat('D',sl,pick,money)">{{sl}}</span>
+													</div >
+												</div>			
+												<span  class="blockSeat" ng-repeat="slp in range(slDpick)"></span>
+											</div>
+										</div>					
+									</div>	
+									<div class="dayE">
+										<div class="container">
+											<h4>E</h4>
+											<div class="frameSeat">
+
+												<div ng-repeat="sl in range(ghe.slE) "  >												
+													<div  ng-if="checkBk(sl,'E')==1">
+														<span class="seat" 	style="background: #35ce2b;"></span>
+													</div>
+													<div ng-if="checkBk(sl,'E')==0">
+														<span class="seat" 
+														ng-class="pick[0] =='E{{sl}}' || pick[1] == 'E{{sl}}'? 'pickSeat': ''"    ng-click="pickSeat('E',sl,pick,money)">{{sl}}</span>
+													</div >
+												</div>			
+												<span  class="blockSeat" ng-repeat="slp in range(slEpick)"></span>
+											</div>
+										</div>				
+									</div>	
+								</div>
 							</div>
-						</div>
-						<div class="col-4">
-							<div id="thongtinOder">
-								<div class="inf">
-									<p>Suất chiếu : {{giC}}</p>
-									<p>Ngày chiếu : {{crDate}}</p>
-									<p>Ghế :<span ng-repeat="index in pick">&ensp;{{index}}&ensp;</span></p>
-									<p>Tổng tiền:&ensp;<span style="color: #14d8cf;">{{moNey}}</span>&ensp;đ</p>
+							<div class="col-4">
+								<div id="thongtinOder">
+									<div class="inf">
+										<p>Suất chiếu : {{giC}}</p>
+										<p>Ngày chiếu : {{crDate}}</p>
+										<p>Ghế :<span ng-repeat="index in pick">&ensp;{{index}}&ensp;</span></p>
+										<p>Tổng tiền:&ensp;<span style="color: #14d8cf;">{{moNey}}</span>&ensp;đ</p>
 
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-
-					<div class="infoSeat">
-						<ul>
-							<li>
-								<span id="gheTrong"></span>
-								<h5>Ghế trống</h5>
-							</li>
-							<li>
-								<span id="pickSeat"></span>
-								<h5>Ghế đang chọn</h5>
-							</li>
-							<li>
-								<span id="oderSeat"></span>
-								<h5>Ghế đã được đặt</h5>
-							</li>
-							<li>
-								<span id="blockSeat"></span>
-								<h5>Ghế không thể chọn</h5>
-							</li>
-						</ul>
-					</div>	
-					<div class="nutDatve">
-						<a style="cursor: pointer;" ng-click="oderTicket(pick,val)">ĐẶT VÉ NGAY</a>
+						<div class="infoSeat">
+							<ul>
+								<li>
+									<span id="gheTrong"></span>
+									<h5>Ghế trống</h5>
+								</li>
+								<li>
+									<span id="pickSeat"></span>
+									<h5>Ghế đang chọn</h5>
+								</li>
+								<li>
+									<span id="oderSeat"></span>
+									<h5>Ghế đã được đặt</h5>
+								</li>
+								<li>
+									<span id="blockSeat"></span>
+									<h5>Ghế không thể chọn</h5>
+								</li>
+							</ul>
+						</div>	
+						<div class="nutDatve">
+							<a style="cursor: pointer;" ng-click="bookTicket(pick,val)">ĐẶT VÉ NGAY</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<span ng-init="checkRp[0]=val.idPhim"></span>
-			
-		</li>
+			</span>
+		</span>	
 	</ul>
 </div>
 
