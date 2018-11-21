@@ -1,0 +1,67 @@
+<div class="row">
+
+	<div class="col-lg-4" >
+		<div class="card-box ribbon-box card m-b-30 text-xs-center" style="height: 90%; background: transparent;  border: 5px dashed #c8ccce; cursor: pointer;" data-toggle="modal" data-target="#exampleModalCenter">
+			<img src="images/add2.png" class="img-fluid" style="width: 45px; height: 45px; margin: auto; display: block;">
+		</div>
+	</div>
+	<div class="modal fade" id="exampleModalCenter">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Thêm nhân viên</h5>
+					<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				</div>
+				<div class="modal-body">
+					<form  method="post" name="f1" novalidate>
+						<div class="form-group row">
+							<label for="exampleInput" class="col-2 col-form-label">Tên Rạp Chiếu </label>
+							<select name=rapPhim  class="form-control col-10" ng-model="idRap" ng-change="showPC(idRap)">
+								<option ng-repeat="value in rp" value="{{value.id}}">{{value.tenRap}}</option>
+							</select>              
+						</div>    
+						<div class="form-group row">
+							<label class="col-2 col-form-label">Phòng Chiếu :</label>
+							<select name=phogChieu  class="form-control col-10" ng-model="idPC">
+								<option ng-repeat="ele in pcByID" value="{{ele.id}}">{{ele.tenPC}}</option>
+							</select>
+						</div>
+						<div class="form-group row">
+							<label class="col-2 col-form-label">Ngày Chiếu</label>
+							<md-datepicker ng-model="ngayC.date"   md-placeholder="Enter date"></md-datepicker>
+						</div>
+						<div class="form-group row">
+							<label for="exampleInput" class="col-2 col-form-label">Thể Loại </label>
+							<select  class="form-control col-10" ng-model="idTL" ng-change="showPhim(idTL)">
+								<option ng-repeat="tl in theloai" value="{{tl.id}}">{{tl.tenTL}}</option>
+							</select>              
+						</div>
+						<div class="form-group row">
+							<label class="col-2 col-form-label">Phim :</label>
+							<select  class="form-control col-10" ng-model="idPhim">
+								<option ng-repeat="mv in movies" value="{{mv.id}}">{{mv.tenPhim}}</option>
+							</select>
+						</div>   
+						<div class="form-group row">
+							<label for="exampleInput" class="col-2 col-form-label">Suất Chiếu </label>
+							<select  class="form-control col-10" ng-model="idSC">
+								<option ng-repeat="sc in suatChieu" value="{{sc.id}}">{{sc.gioChieu | date: "HH:mm:ss"}}</option>
+							</select>              
+						</div>
+						<button type="button" class="btn btn-outline-primary nutSubmit" ng-click="addLichChieu()">Thêm</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-4">
+		<div class="card-box ribbon-box">
+			<div class="ribbon ribbon-primary">Primary Ribbon</div>
+			<p class="m-b-0">Quisque nec turpis at urna dictum luctus. Suspendisse convallis dignissim eros at volutpat. In egestas mattis dui. Aliquam mattis dictum aliquet. Nulla sapien mauris, eleifend et sem ac, commodo dapibus odio.</p>
+		</div>
+	</div>
+</div>

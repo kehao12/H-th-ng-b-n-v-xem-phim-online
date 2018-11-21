@@ -29,7 +29,9 @@ session_start();
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/typography.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/default-css.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/styles.css">
+	<link rel="stylesheet" href="<?php echo asset('') ?>css/style_Ad1.css">
 	<link rel="stylesheet" href="<?php echo asset('') ?>css/responsive.css">
+	<link href="<?php echo asset('') ?>/plugins/custombox/css/custombox.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="plugins/jquery-toastr/jquery.toast.min.css"><!-- modernizr css -->
 	<script src="<?php echo asset('') ?>js/modernizr-2.8.3.min.js"></script>
 </head>
@@ -52,12 +54,9 @@ session_start();
 							</li>
 							<li >
 								<?php if(Session::get('quyen') == 3){ ?>
-									<a href="" aria-expanded="true" ><i class="ti-layout-sidebar-left "></i><span>QL NHÂN VIÊN
+									<a href="<?php echo $url; ?>nhanVien"><i class="ti-layout-sidebar-left "></i><span>QL NHÂN VIÊN
 									</span></a>
-									<ul class="collapse">
-										<li><a href="http://localhost:8080/PROJECT/Cinema/public/admin#/nvAdd">THÊM MỚI</a></li>
-										<li><a href="http://localhost:8080/PROJECT/Cinema/public/admin#/nvEdit">SỬA THÔNG TIN</a></li>
-									</ul>
+									
 								<?php } else{ ?>
 									<a href="" aria-expanded="true" class="denied"><i class="ti-layout-sidebar-left "></i><span>QL NHÂN VIÊN
 									</span></a>
@@ -196,7 +195,7 @@ session_start();
 							</div>
 							<!-- page title area end -->
 							<div class="main-content-inner" >
-								<div ng-view ></div>			
+								<div ng-view  style="margin-top:15px;"></div>			
 							</div>
 							<!-- main content area end -->
 						</div>
@@ -251,6 +250,8 @@ session_start();
 					<!-- others plugins -->
 					<script src="<?php echo asset('') ?>js/plugins.js"></script>
 					<script src="<?php echo asset('') ?>js/scripts.js"></script>
+					<script src="<?php echo asset('') ?>plugins/custombox/js/custombox.min.js"></script>
+					<script src="<?php echo asset('') ?>plugins/custombox/js/legacy.min.js"></script>
 
 					<?php 
 					if(Session::has('toastAD')){ ?>

@@ -223,12 +223,42 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 
 
 	};
-
-
-	$scope.vtSeat=function(value){
-		$scope.pick=value;
+	$scope.arrMv=[];
+	$scope.rsArr=function(){
+		$scope.arrMv.splice(0,$scope.arrMv.length);
+		//return $scope.arrMv;
 	}
-	$scope.pick=[];
+	
+	$scope.checkIdPhim=function(val,arrMv){
+		//$scope.arrMv=$scope.rsArr($scope.arrMv);
+		console.log(arrMv);
+		var temp=0;
+		var kt=true;
+		if(arrMv.length == 0){
+			arrMv.push(val.idPhim);
+			temp=1;
+		}
+		else {
+			for(var i=0;i<arrMv.length;i++){
+				if(val.idPhim == arrMv[i]){
+					kt=false;
+					break;
+				}
+			}
+			if(kt==true){
+				arrMv.push(val.idPhim);
+				temp=1;
+			}
+			else{
+
+				temp=0;
+			}
+		}
+		
+		console.log(arrMv);
+		return temp;
+	}
+
 	$scope.moNey=0;
 	$scope.pickSeat=function(value,sl,pick){
 		/*console.log($scope.ve);
@@ -301,22 +331,7 @@ app.config(['$mdThemingProvider', function ($mdThemingProvider) {
 	
 	console.log(pick);
 }
-$scope.checkIdPhim=function(val,checkIdMovie){
-	var kt;
-	if(checkIdMovie.length == 0){
-		checkIdMovie.push(val.idPhim);
-		kt=0;
-	}
-	else{
-		for(var i=0;i<checkIdMovie.lenght;i++){
-			if(checkIdMovie[i] == val.idPhim){
-				kt=1;
-				break;
-			}
-		}
-	}
-	return kt;
-}
+
 $scope.range = function(max){
 
 	var input = [];

@@ -511,7 +511,7 @@
 						<div class="col-md-4">
 							<div class="tenRap" ng-init="curre=[]">
 								<ul >									
-									<li ng-repeat="rap in rapPhim" ng-init="mauAct=rap.id" ng-click="getIdRap(rap,curre)" ng-model="rap.id" ><a href="home#/lichChieu" style="text-decoration: none; color: gray;"><h3  ng-style="{color: curre[0] == mauAct ?'white':''} " >{{rap.tenRap}}</h3></a></li>
+									<li ng-repeat="rap in rapPhim" ng-init="mauAct=rap.id" ng-click="getIdRap(rap,curre)" ng-model="rap.id" ><a href="home#/lichChieu" style="text-decoration: none; color: gray;" ng-click="rsArr()"><h3  ng-style="{color: curre[0] == mauAct ?'white':''} " >{{rap.tenRap}}</h3></a></li>
 								</ul>
 							</div>
 						</div>

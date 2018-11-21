@@ -8,7 +8,12 @@
  	$routeProvider.
  	when('/',{
  		templateUrl:urlLocal+'admin/adIndex.php',
- 	}).
+ 	})
+ 	.when('/nhanVien', {
+ 		templateUrl: urlLocal+'admin/nhanVien.html',
+ 		controller: 'NhanVienCtrl'
+ 	})
+ 	.
  	when('/nvAdd',{
  		templateUrl:urlLocal+'admin/nhanVien/nhanVien_add.html',
  		controller:'themNhanVien'

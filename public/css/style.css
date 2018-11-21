@@ -287,8 +287,8 @@ header .layerCha .slideImg .slideChild .ndPhim h4 a{color:#ff5860; }
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .infoLichMovie h5{    font-family: roboto;font-size: 20px; margin-left: 8%; margin-top: 1%;float: left;}
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .infoLichMovie h5 span{    display: block; font-size: 15px; padding-top: 3px;  color: #d8d6d6;}
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie{width: 100%;text-indent: -16%; margin-top: 2%;border-bottom: 1px solid;padding-bottom: 3%;} 
-.lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li{list-style: none;display: inline-block;    display: inline-block;margin-left: 27%;}
-.lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a{transition: 0.3s;text-decoration: none;    color: #35de33;font-size: 30px;cursor: pointer;}
+.lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li{list-style: none;display: inline-block;display: inline-block;margin-left: 20%;margin-top: 2%;}
+.lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a{transition: 0.3s;text-decoration: none;color: #35de33;font-size: 23px;cursor: pointer;}
 .lichChieu .formLichChieu .suatChieu .lichMovies ul li .dateTimeMovie ul li a:hover{ color: #b7ea91;}
 /*  so ghe */
 .lichChieu .numberGhe{width: 60%;height: 68%;position: fixed;top: 19%;left: 22%;background: #212529;z-index: 10;}
